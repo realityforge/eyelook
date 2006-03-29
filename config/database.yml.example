@@ -1,0 +1,20 @@
+login: &login
+  adapter: mysql
+  host: localhost
+  username: root
+  password: 
+  
+
+development:
+  database: eyelook
+  <<: *login
+
+test:
+  database: eyelook_tests
+  <<: *login
+
+production:
+  database: eyelook
+  <<: *login
+
+
