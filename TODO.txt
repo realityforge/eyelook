@@ -1,0 +1,3 @@
+* freeze rails gems
+* move to database sessions
+* add controllers/views
