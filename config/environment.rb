@@ -50,8 +50,11 @@ end
 #   inflect.uncountable %w( fish sheep )
 # end
 
+require_gem 'acts_as_taggable'
+
 Inflector.inflections do |inflect|
   inflect.uncountable %w( picture_data )
 end
 
-::OrderedTables = [:users, :albums, :pictures, :picture_data].collect {|x| x.to_s }
+::OrderedTables = [:users, :albums, :pictures, :picture_data, :tags, :tags_pictures, :tags_albums].collect {|x| x.to_s }
+

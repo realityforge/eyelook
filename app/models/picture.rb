@@ -6,7 +6,7 @@ class Picture < ActiveRecord::Base
   validates_length_of :name, :in => 1...50
   validates_uniqueness_of :name, :scope => 'group_id'
 
-  #acts_as_taggable
+  acts_as_taggable
   acts_as_list :scope => 'album_id'
   
   def data=(data_field)

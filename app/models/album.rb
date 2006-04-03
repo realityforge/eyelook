@@ -6,5 +6,5 @@ class Album < ActiveRecord::Base
   validates_length_of :name, :in => 1...50
 
   acts_as_list :scope => 'user_id'
-  #acts_as_taggable
+  acts_as_taggable
 end

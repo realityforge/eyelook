@@ -34,6 +34,10 @@ class PictureTest < Test::Unit::TestCase
     assert_not_nil pictures(:pictures_1).lower_item
     assert_equal 2, pictures(:pictures_1).lower_item.position
     assert_equal 1, pictures(:pictures_1).album.id
+
+    assert_equal 2, pictures(:pictures_1).tag_names.size
+    assert pictures(:pictures_1).tag_names.include?('happy')
+    assert pictures(:pictures_1).tag_names.include?('sad')
   end
 
   def test_data_setter

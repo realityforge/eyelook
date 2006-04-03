@@ -21,6 +21,10 @@ class AlbumTest < Test::Unit::TestCase
     assert_equal 1, albums(:albums_1).pictures[0].id
     assert_equal 2, albums(:albums_1).pictures[1].position
     assert_equal 2, albums(:albums_1).pictures[1].id
+
+    assert_equal 2, albums(:albums_1).tag_names.size
+    assert albums(:albums_1).tag_names.include?('happy')
+    assert albums(:albums_1).tag_names.include?('sad')
   end
 
   def test_save_with_nil_user
