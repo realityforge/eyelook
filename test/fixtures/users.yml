@@ -1,0 +1,5 @@
+users_peter:
+  id: 1
+  name: 'peter'
+  salt: 'MyMostMagicSaltiness'
+  password: <%= Digest::SHA1.hexdigest('--MyMostMagicSaltiness--retep--') %>
