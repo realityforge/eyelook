@@ -1,0 +1,12 @@
+picture_data_1:
+  id: 1
+  picture_id: 1
+  name: 'file.jpg'
+  content_type: 'image/jpg'
+  data: 'X'
+picture_data_2:
+  id: 2
+  picture_id: 2
+  name: 'file.jpg'
+  content_type: 'image/jpg'
+  data: 'X'

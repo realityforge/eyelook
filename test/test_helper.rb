@@ -6,4 +6,6 @@ class Test::Unit::TestCase
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false
   self.pre_loaded_fixtures = true
+
+  fixtures ::OrderedTables
 end

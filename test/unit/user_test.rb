@@ -1,8 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class UserTest < Test::Unit::TestCase
-  fixtures :users, :albums
-
   def test_basic_load
     assert_not_nil users(:users_1)
     assert_kind_of User, users(:users_1)

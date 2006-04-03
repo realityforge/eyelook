@@ -11,7 +11,7 @@ Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence those specified here
   
   # Skip frameworks you're not going to use
-  # config.frameworks -= [ :action_web_service, :action_mailer ]
+  config.frameworks -= [ :action_web_service, :action_mailer ]
 
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
@@ -36,7 +36,7 @@ Rails::Initializer.run do |config|
   
   # Use Active Record's schema dumper instead of SQL when creating the test database
   # (enables use of different database adapters for development and test environments)
-  # config.active_record.schema_format = :ruby
+  config.active_record.schema_format = :ruby
 
   # See Rails::Configuration for more options
 end
@@ -50,4 +50,8 @@ end
 #   inflect.uncountable %w( fish sheep )
 # end
 
-# Include your application configuration below
+Inflector.inflections do |inflect|
+  inflect.uncountable %w( picture_data )
+end
+
+::OrderedTables = [:users, :albums, :pictures, :picture_data].collect {|x| x.to_s }

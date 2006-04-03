@@ -1,7 +1,6 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class AlbumTest < Test::Unit::TestCase
-  fixtures :users, :albums
 
   def test_basic_load
     assert_kind_of Album, albums(:albums_1)
@@ -16,6 +15,12 @@ class AlbumTest < Test::Unit::TestCase
     assert_not_nil albums(:albums_1).lower_item
     assert_equal 2, albums(:albums_1).lower_item.position
     assert_equal 1, albums(:albums_1).user.id
+
+    assert_equal 2, albums(:albums_1).pictures.size
+    assert_equal 1, albums(:albums_1).pictures[0].position
+    assert_equal 1, albums(:albums_1).pictures[0].id
+    assert_equal 2, albums(:albums_1).pictures[1].position
+    assert_equal 2, albums(:albums_1).pictures[1].id
   end
 
   def test_save_with_nil_user

@@ -1,6 +1,6 @@
 class Album < ActiveRecord::Base
   belongs_to :user
-  #has_many :pictures, :order => 'position', :dependent => true
+  has_many :pictures, :order => 'position', :dependent => true
 
   validates_presence_of :user_id  
   validates_length_of :name, :in => 1...50
