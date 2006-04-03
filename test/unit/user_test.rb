@@ -4,7 +4,7 @@ class UserTest < Test::Unit::TestCase
   fixtures :users
 
   def test_basic_load
-    u = users(:users_peter)
+    u = users(:users_1)
     assert_not_nil u
     assert_kind_of User, u
     assert_equal u.id, 1
