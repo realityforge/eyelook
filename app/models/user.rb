@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   validates_length_of :name, :within => 1..20
   validates_uniqueness_of :name
 
+  has_many :albums, :order => 'position', :dependent => true
+
   def self.authenticate(name, password)
     user = find_by_name(name)
     return nil unless user

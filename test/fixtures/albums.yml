@@ -1,0 +1,16 @@
+albums_1:
+  id: 1
+  user_id: 1
+  name: 'Climbing with the Crazy Canadians'
+  description: 'One upon a time I met a crazy canadian who was more buff than me and ... climbing is fun.'
+  position: 1
+  created_at: '2005-10-20 00:00:00'
+  updated_at: '2005-10-20 00:00:00'
+albums_2:
+  id: 2
+  user_id: 1
+  name: 'Here today, gone tomorrow'
+  description: 'So saids P-bomb'
+  position: 2
+  created_at: '2005-10-20 00:00:00'
+  updated_at: '2005-10-20 00:00:00'

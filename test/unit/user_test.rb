@@ -1,16 +1,18 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class UserTest < Test::Unit::TestCase
-  fixtures :users
+  fixtures :users, :albums
 
   def test_basic_load
-    u = users(:users_1)
-    assert_not_nil u
-    assert_kind_of User, u
-    assert_equal u.id, 1
-    assert_equal u.name, 'peter'
-    assert_equal u.salt, 'MyMostMagicSaltiness'
-    assert_equal u['password'], Digest::SHA1.hexdigest("--MyMostMagicSaltiness--retep--")
+    assert_not_nil users(:users_1)
+    assert_kind_of User, users(:users_1)
+    assert_equal 1, users(:users_1).id
+    assert_equal 'peter', users(:users_1).name
+    assert_equal 'MyMostMagicSaltiness', users(:users_1).salt
+    assert_equal Digest::SHA1.hexdigest("--MyMostMagicSaltiness--retep--"), users(:users_1)['password']
+    assert_equal 2, users(:users_1).albums.size
+    assert_equal 1, users(:users_1).albums[0].position
+    assert_equal 2, users(:users_1).albums[1].position
   end
 
   def test_authenticate
@@ -26,11 +28,10 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_password_write
-    password = 'secret'
     user = User.new
     user.name = 'bob'
-    user.password = password
-    assert user.password_matches?(password)
+    user.password = 'secret'
+    assert user.password_matches?('secret')
     assert_not_nil user['salt']
   end
 
@@ -42,5 +43,4 @@ class UserTest < Test::Unit::TestCase
     assert_equal true, users(:users_1).password_matches?('retep')
     assert_equal false, users(:users_1).password_matches?('bad_password')
   end
-
 end
