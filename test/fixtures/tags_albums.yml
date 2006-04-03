@@ -1,0 +1,12 @@
+tags_albums_1:
+  tag_id: 1
+  album_id: 1
+tags_albums_2:
+  tag_id: 2
+  album_id: 1
+tags_albums_3:
+  tag_id: 1
+  album_id: 2
+tags_albums_4:
+  tag_id: 3
+  album_id: 2
