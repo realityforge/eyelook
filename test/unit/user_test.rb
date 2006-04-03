@@ -35,12 +35,12 @@ class UserTest < Test::Unit::TestCase
   end
 
   def test_password_read
-    assert_equal '',users(:users_peter).password
+    assert_equal '', users(:users_1).password
   end
 
   def test_password_matches?
-    assert_equal true, users(:users_peter).password_matches?('retep')
-    assert_equal false, users(:users_peter).password_matches?('bad_password')
+    assert_equal true, users(:users_1).password_matches?('retep')
+    assert_equal false, users(:users_1).password_matches?('bad_password')
   end
 
 end
