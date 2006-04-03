@@ -3,7 +3,6 @@ login: &login
   host: localhost
   username: root
   password: 
-  
 
 development:
   database: eyelook
