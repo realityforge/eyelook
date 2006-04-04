@@ -1,7 +1,7 @@
 albums_1:
   id: 1
   user_id: 1
-  name: 'climbing_with_crazy_canadians'
+  permalink: 'climbing_with_crazy_canadians'
   caption: 'Climbing with the Crazy Canadians'
   description: 'One upon a time I met a crazy canadian who was more buff than me and ... climbing is fun.'
   position: 1
@@ -10,7 +10,7 @@ albums_1:
 albums_2:
   id: 2
   user_id: 1
-  name: 'here_gone'
+  permalink: 'here_gone'
   caption: 'Here today, gone tomorrow'
   description: 'So saids P-bomb'
   position: 2
