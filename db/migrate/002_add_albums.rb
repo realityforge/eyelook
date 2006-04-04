@@ -3,6 +3,7 @@ class AddAlbums < ActiveRecord::Migration
     create_table 'albums', :force => true do |t|
       t.column 'user_id', :integer, :null => false
       t.column 'name', :string, :limit => 50, :null => false
+      t.column 'caption', :string, :limit => 50, :null => false
       t.column 'description', :text
       t.column 'position', :integer, :null => false
       t.column 'created_at', :datetime, :null => false
