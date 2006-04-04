@@ -1,4 +1,4 @@
-class AddAlbum < ActiveRecord::Migration
+class AddAlbums < ActiveRecord::Migration
   def self.up
     create_table 'albums', :force => true do |t|
       t.column 'user_id', :integer, :null => false

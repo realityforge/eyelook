@@ -1,4 +1,4 @@
-class AddPicture < ActiveRecord::Migration
+class AddPictures < ActiveRecord::Migration
   def self.up
     create_table 'pictures', :force => true do |t|
       t.column 'album_id', :integer
