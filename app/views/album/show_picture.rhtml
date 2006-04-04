@@ -1,0 +1,10 @@
+<% @page_title = "#{@user.name}: #{@album.caption} - #{@picture.caption}" %>
+<h1><%= @page_title %></h1>
+<%= @picture.caption %>
+<% if @picture.tags.size > 0 %>
+<ul>
+<% for tag in @picture.tags %>
+  <li><%= tag.name %> </li>
+<% end %>
+</ul>
+<% end %>
