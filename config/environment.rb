@@ -38,6 +38,8 @@ Rails::Initializer.run do |config|
   # (enables use of different database adapters for development and test environments)
   config.active_record.schema_format = :ruby
 
+  # Turn off colored logs
+  config.active_record.colorize_logging = false
   # See Rails::Configuration for more options
 end
 
