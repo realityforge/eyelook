@@ -1,0 +1,28 @@
+<% if @use_link_targets %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<% else %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<% end %>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title><%= @page_title if @page_title %></title>
+  <meta http-equiv="Content-Language" content="en-us" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <%= @content_for_head if @content_for_head %>
+</head>
+<body id="<%= controller.class.name.gsub(/Controller/,'').gsub(/\:\:/,'_').downcase %>__<%= @action_name %>">
+
+<% style = flash[:alert] ? " alert" : (flash[:notice] ? " notice" : "") -%>
+<div id="flash" class="<%= style %>">&nbsp;<%= flash[:alert] ? h(flash[:alert]) : h(flash[:notice]) -%></div>
+
+<div id="content"><%= @content_for_layout %></div>
+
+<% if RAILS_ENV == 'development' %>
+<center>
+<button onclick="show_debug_popup(); return false;">Show debug popup</button></center>
+<%= debug_popup %>
+<% end %>
+</body>
+</html>
