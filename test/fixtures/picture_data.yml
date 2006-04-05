@@ -1,12 +1,26 @@
+<%
+  def fixture_data(name)
+    render_binary("#{RAILS_ROOT}/test/fixtures/#{name}")
+  end
+
+  def render_binary(filename)
+    data = File.open(filename,'rb').read
+    e = YAML::Emitter.new({})
+    e.start_object('X')
+    output = e.binary_base64(data).gsub(/\n/,"\n    ")
+    e.end_object
+    output
+  end
+%>
 picture_data_1:
   id: 1
   picture_id: 1
   name: 'file.jpg'
   content_type: 'image/jpg'
-  data: 'X'
+  data: <%= fixture_data("picture_data_1.jpg") %>
 picture_data_2:
   id: 2
   picture_id: 2
-  name: 'file.jpg'
-  content_type: 'image/jpg'
-  data: 'X'
+  name: 'file.gif'
+  content_type: 'image/gif'
+  data: <%= fixture_data("picture_data_2.gif") %>
