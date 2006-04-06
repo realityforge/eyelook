@@ -8,6 +8,10 @@ class Picture < ActiveRecord::Base
 
   acts_as_taggable
   acts_as_list :scope => 'album_id'
+
+  def filename
+    "#{position}.#{picture_data.content_type.gsub(/.+\//,'')}"
+  end
   
   def data=(data_field)
     self.picture_data =

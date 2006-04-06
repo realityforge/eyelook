@@ -48,4 +48,9 @@ class PictureTest < Test::Unit::TestCase
     assert_equal('text/plain', picture.picture_data.content_type)
     assert_equal('ABCDEFGHIJKLMNOPQRSTUVWXYZ', picture.picture_data.data)
   end
+
+  def test_filename
+    assert_equal('2.jpg', pictures(:pictures_1).filename)
+    assert_equal('1.gif', pictures(:pictures_2).filename)
+  end
 end
