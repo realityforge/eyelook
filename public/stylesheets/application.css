@@ -1,0 +1,45 @@
+body 
+{ 
+  font-size: 62.5%;
+}
+
+ul.thumbnails
+{ 
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 36em;
+  height: 36em;
+  float: left;
+  border: 1px solid black;
+}
+
+ul.thumbnails li a
+{ 
+  float: left;
+  display: block;
+  text-decoration: none;
+  width: 10em;
+  height: 12em;
+  padding: 0.5em;
+  margin: 0;
+}
+
+ul.thumbnails li a:hover
+{ 
+  background-color: red;
+}
+
+ul.thumbnails li a img, ul.thumbnails li a h4
+{ 
+  font-size: 140%;
+  margin: 0;
+  border: 0; 
+  padding: 0;
+  color: black;
+}
+
+div.thumbnail
+{
+  text-align: center;
+}

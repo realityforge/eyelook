@@ -1,6 +1,6 @@
 <% @page_title = "#{@user.name}: #{@album.caption}" %>
 <h1><%= @page_title %></h1>
-<ul>
+<ul class="thumbnails">
   <% for picture in @pictures %>
   <li><%= render(:partial => 'thumbnail', :locals => {:picture => picture}) %></li>
   <% end %>

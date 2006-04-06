@@ -19,6 +19,7 @@
   <%= javascript_include_tag(:defaults) %>
   <%= javascript_include_tag('lightbox') %>
   <%= stylesheet_link_tag('lightbox', :media => 'screen') %>
+  <%= stylesheet_link_tag('application', :media => 'screen') %>
   <%= @content_for_head if @content_for_head %>
 </head>
 <body id="<%= controller.class.name.gsub(/Controller/,'').gsub(/\:\:/,'_').downcase %>__<%= @action_name %>">
