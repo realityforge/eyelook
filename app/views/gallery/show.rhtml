@@ -2,8 +2,9 @@
 <h1><%= @page_title %></h1>
 <ul>
   <% for picture in @pictures %>
+  <% image_options = {:action => 'show_image', :user => params[:user], :album => params[:album], :picture => picture.filename} %>
   <li>
-    <img src="<%= url_for(:action => 'show_image', :user => params[:user], :album => params[:album], :picture => picture.filename, :size => 'thumbnail') %>" alt="<%= h(picture.caption).gsub(/\"/,'&quot;') %>"/>
+    <a href="<%= url_for(:user => @user.name, :album => @album.permalink, :picture => picture.position, :action => 'show_picture') %>" title="<%= h(picture.caption) %>"><img src="<%= url_for(:action => 'show_image', :user => params[:user], :album => params[:album], :picture => picture.filename, :size => 'thumbnail') %>" alt="<%= h(picture.caption) %>"/></a>
 <%= link_to(picture.caption, :user => @user.name, :album => @album.permalink, :picture => picture.position, :action => 'show_picture') %>
   </li>
   <% end %>

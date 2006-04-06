@@ -15,7 +15,7 @@ class PictureTest < Test::Unit::TestCase
     assert_kind_of Picture, pictures(:pictures_1)
     assert_equal 1, pictures(:pictures_1).id
     assert_equal 1, pictures(:pictures_1).album_id
-    assert_equal 'Go baby! Go!', pictures(:pictures_1).caption
+    assert_equal 'Go "baby"! Go!', pictures(:pictures_1).caption
     assert_equal 'Nobody fucks with the Jesus - this is why!', pictures(:pictures_1).description
     assert_equal 'image/jpg', pictures(:pictures_1).content_type
     assert_equal 2, pictures(:pictures_1).position
