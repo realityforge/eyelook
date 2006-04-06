@@ -14,11 +14,9 @@ class AddPictures < ActiveRecord::Migration
 
     create_table('picture_data', :force => true) do |t|
       t.column 'picture_id', :integer, :null => false
-      t.column 'name', :string, :limit => 50, :null => false
       t.column 'content_type', :string, :limit => 25, :null => false
       t.column 'data', :binary, :null => false
     end
-    add_index 'picture_data', ['name'], :name => 'picture_data_name_index'
     add_foreign_key_constraint 'picture_data', 'picture_id', 'pictures', 'id', :name => 'picture_data_picture_id_fk'
   end
 

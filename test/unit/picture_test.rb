@@ -10,17 +10,7 @@ class FakeFile
   end
 end
 
-require 'picture'
-class Picture < ActiveRecord::Base
-  def self.base_part_of2(file_name); base_part_of(file_name); end
-end
-
 class PictureTest < Test::Unit::TestCase
-  def test_base_part_of
-    assert_equal('file.txt', Picture.base_part_of2('/a/b/c/file.txt'))
-    assert_equal('file.txt', Picture.base_part_of2('C:\a\file.txt'))
-  end
-
   def test_basic_load
     assert_kind_of Picture, pictures(:pictures_1)
     assert_equal 1, pictures(:pictures_1).id
@@ -44,7 +34,6 @@ class PictureTest < Test::Unit::TestCase
   def test_data_setter
     picture = Picture.new
     picture.data = FakeFile.new('C:\a\file.txt','text/plain','ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-    assert_equal('file.txt', picture.picture_data.name)
     assert_equal('text/plain', picture.picture_data.content_type)
     assert_equal('ABCDEFGHIJKLMNOPQRSTUVWXYZ', picture.picture_data.data)
   end

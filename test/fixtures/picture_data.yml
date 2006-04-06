@@ -15,12 +15,10 @@
 picture_data_1:
   id: 1
   picture_id: 1
-  name: 'file.jpg'
   content_type: 'image/jpg'
   data: <%= fixture_data("picture_data_1.jpg") %>
 picture_data_2:
   id: 2
   picture_id: 2
-  name: 'file.gif'
   content_type: 'image/gif'
   data: <%= fixture_data("picture_data_2.gif") %>
