@@ -1,6 +1,6 @@
 <% @page_title = "#{@user.name}: #{@album.caption} - #{@picture.caption}" %>
 <div class="picture">
-<img src="<%= url_for(:action => 'show_image', :user => params[:user], :album => params[:album], :picture => @picture.filename, :size => 'original') %>" alt="<%= h(@picture.caption).gsub(/\"/,'&quot;') %>"/>
+<img src="<%= url_for(:action => 'show_image', :user => params[:user], :album => params[:album], :picture => @picture.filename, :size => 'large') %>" alt="<%= h(@picture.caption).gsub(/\"/,'&quot;') %>"/>
 <h3><%= h(@picture.caption) %></h3>
 <% if @picture.tags.size > 0 %>
 <p>Tags:</p>

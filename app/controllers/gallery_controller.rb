@@ -33,14 +33,15 @@ class GalleryController < ApplicationController
   end
 
   def show_image
+    disposition = (params[:disposition] == 'download') ? 'download' : 'inline'
     @user = find_user
     @album = find_album
     @picture = find_picture
     if params[:size] == 'original'
       send_data(@picture.picture_data.data, 
-                :filename => @picture.filename,
+                :filename => "#{@album.permalink}_#{@picture.filename}",
                 :type => @picture.content_type,
-                :disposition => 'inline')
+                :disposition => disposition)
     else
       geometry = @@geometry[params[:size]]
       if geometry.nil?
@@ -62,7 +63,7 @@ class GalleryController < ApplicationController
 
   private 
 
-  @@geometry = {'large' => '500x500', 'thumbnail' => '90x90'}
+  @@geometry = {'large' => '400x400', 'thumbnail' => '90x90'}
   
   def find_user
     user = User.find(:first, :conditions => ['name = ?', params[:user]])
