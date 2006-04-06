@@ -39,7 +39,7 @@ class GalleryController < ApplicationController
     if params[:size] == 'original'
       send_data(@picture.picture_data.data, 
                 :filename => @picture.filename,
-                :type => @picture.picture_data.content_type,
+                :type => @picture.content_type,
                 :disposition => 'inline')
     else
       geometry = @@geometry[params[:size]]
@@ -50,7 +50,7 @@ class GalleryController < ApplicationController
         image.change_geometry!(geometry) {|cols,rows,img| img.resize!(cols,rows)}
         send_data(image.to_blob, 
                   :filename => @picture.filename,
-                  :type => @picture.picture_data.content_type,
+                  :type => @picture.content_type,
                   :disposition => 'inline')
       end
     end

@@ -17,6 +17,7 @@ class PictureTest < Test::Unit::TestCase
     assert_equal 1, pictures(:pictures_1).album_id
     assert_equal 'Go baby! Go!', pictures(:pictures_1).caption
     assert_equal 'Nobody fucks with the Jesus - this is why!', pictures(:pictures_1).description
+    assert_equal 'image/jpg', pictures(:pictures_1).content_type
     assert_equal 2, pictures(:pictures_1).position
     assert_not_nil pictures(:pictures_1).created_at
     assert_not_nil pictures(:pictures_1).updated_at
@@ -34,7 +35,7 @@ class PictureTest < Test::Unit::TestCase
   def test_data_setter
     picture = Picture.new
     picture.data = FakeFile.new('C:\a\file.txt','text/plain','ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-    assert_equal('text/plain', picture.picture_data.content_type)
+    assert_equal('text/plain', picture.content_type)
     assert_equal('ABCDEFGHIJKLMNOPQRSTUVWXYZ', picture.picture_data.data)
   end
 
