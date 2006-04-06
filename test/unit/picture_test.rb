@@ -27,12 +27,13 @@ class PictureTest < Test::Unit::TestCase
     assert_equal 1, pictures(:pictures_1).album_id
     assert_equal 'Go baby! Go!', pictures(:pictures_1).caption
     assert_equal 'Nobody fucks with the Jesus - this is why!', pictures(:pictures_1).description
-    assert_equal 1, pictures(:pictures_1).position
+    assert_equal 2, pictures(:pictures_1).position
     assert_not_nil pictures(:pictures_1).created_at
     assert_not_nil pictures(:pictures_1).updated_at
 
-    assert_not_nil pictures(:pictures_1).lower_item
-    assert_equal 2, pictures(:pictures_1).lower_item.position
+    assert_nil pictures(:pictures_1).lower_item
+    assert_not_nil pictures(:pictures_1).higher_item
+    assert_equal 1, pictures(:pictures_1).higher_item.position
     assert_equal 1, pictures(:pictures_1).album.id
 
     assert_equal 2, pictures(:pictures_1).tag_names.size

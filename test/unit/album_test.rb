@@ -9,19 +9,19 @@ class AlbumTest < Test::Unit::TestCase
     assert_equal 'climbing_with_crazy_canadians', albums(:albums_1).permalink
     assert_equal 'Climbing with the Crazy Canadians', albums(:albums_1).caption
     assert_equal 'One upon a time I met a crazy canadian who was more buff than me and ... climbing is fun.', albums(:albums_1).description
-    assert_equal 1, albums(:albums_1).position
+    assert_equal 2, albums(:albums_1).position
     assert_not_nil albums(:albums_1).created_at
     assert_not_nil albums(:albums_1).updated_at
-    assert_nil albums(:albums_1).higher_item
-    assert_not_nil albums(:albums_1).lower_item
-    assert_equal 2, albums(:albums_1).lower_item.position
+    assert_nil albums(:albums_1).lower_item
+    assert_not_nil albums(:albums_1).higher_item
+    assert_equal 1, albums(:albums_1).higher_item.position
     assert_equal 1, albums(:albums_1).user.id
 
     assert_equal 2, albums(:albums_1).pictures.size
     assert_equal 1, albums(:albums_1).pictures[0].position
-    assert_equal 1, albums(:albums_1).pictures[0].id
+    assert_equal 2, albums(:albums_1).pictures[0].id
     assert_equal 2, albums(:albums_1).pictures[1].position
-    assert_equal 2, albums(:albums_1).pictures[1].id
+    assert_equal 1, albums(:albums_1).pictures[1].id
 
     assert_equal 2, albums(:albums_1).tag_names.size
     assert albums(:albums_1).tag_names.include?('happy')
@@ -78,7 +78,7 @@ class AlbumTest < Test::Unit::TestCase
     assert_nil album.lower_item
     assert_not_nil album.higher_item
     assert_equal 2, album.higher_item.position
-    assert_equal 2, album.higher_item.id
+    assert_equal 1, album.higher_item.id
     assert_equal 1, album.user.id
   end
 end
