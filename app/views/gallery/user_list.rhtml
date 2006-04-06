@@ -1,0 +1,5 @@
+<% @page_title = "Users" %>
+<h1><%= @page_title %></h1>
+<ul>
+<% for user in @users %><li><%= link_to(user.name, :user => user.name, :action => 'list') %></li><% end %>
+</ul>

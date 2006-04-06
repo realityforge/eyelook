@@ -1,12 +1,12 @@
 require File.dirname(__FILE__) + '/../test_helper'
-require 'album_controller'
+require 'gallery_controller'
 
 # Re-raise errors caught by the controller.
-class AlbumController; def rescue_action(e) raise e end; end
+class GalleryController; def rescue_action(e) raise e end; end
 
-class AlbumControllerTest < Test::Unit::TestCase
+class GalleryControllerTest < Test::Unit::TestCase
   def setup
-    @controller = AlbumController.new
+    @controller = GalleryController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
   end

@@ -1,7 +1,0 @@
-<% @page_title = "#{@user.name}'s Photo Albums" %>
-<h1><%= @page_title %></h1>
-<ul>
-  <% for album in @albums %>
-  <li><%= link_to(album.caption, :user => params[:user], :album => album.permalink, :controller => 'album', :action => 'show') %></li>
-  <% end %>
-</ul>

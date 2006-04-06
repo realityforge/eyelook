@@ -1,7 +1,13 @@
-class AlbumController < ApplicationController
-  verify :method => :get, :only => %w( list show show_picture )
+class GalleryController < ApplicationController
+  verify :method => :get, :only => %w( user_list list show show_picture show_image )
   session :off
-  caches_page :list, :show, :show_picture, :show_image
+  caches_page :user_list, :list, :show, :show_picture, :show_image
+
+  def user_list
+    @user_pages, @users = paginate(:users, 
+                                   :order_by => 'name',
+                                   :per_page => 20)
+  end
 
   def list
     @user = find_user
