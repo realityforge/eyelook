@@ -1,9 +1,10 @@
 <% @page_title = "#{@user.name}: #{@album.caption} - #{@picture.caption}" %>
 <div class="picture">
-<img src="<%= url_for(:controller => 'album', :action => 'show_image', :user => params[:user], :album => params[:album], :picture => @picture.filename ) %>" alt="<%= h(@picture.caption) %>"/>
+<img src="<%= url_for(:controller => 'album', :action => 'show_image', :user => params[:user], :album => params[:album], :picture => @picture.filename, :size => 'original') %>"/>
 <h3><%= h(@picture.caption) %></h3>
 <% if @picture.tags.size > 0 %>
 <p>Tags:</p>
 <ul><% for tag in @picture.tags %><li><%= h(tag.name) %></li><% end %></ul>
 <% end %>
 </div>
+<%= link_to('Return to Album', :action => 'show', :user => params[:user], :album => params[:album], :page => ((@picture.position / 20) + 1) ) %>

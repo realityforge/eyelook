@@ -30,10 +30,14 @@ class AlbumController < ApplicationController
     @user = find_user
     @album = find_album
     @picture = find_picture
-    send_data(@picture.picture_data.data, 
-              :filename => @picture.filename,
-	      :type => @picture.picture_data.content_type,
-	      :disposition => 'inline')
+    if params[:size] == 'original'
+      send_data(@picture.picture_data.data, 
+                :filename => @picture.filename,
+                :type => @picture.picture_data.content_type,
+                :disposition => 'inline')
+    else
+      render :text => "Alternative Image Sizes Not Implemented", :status => 501 
+    end
   end
 
   protected
