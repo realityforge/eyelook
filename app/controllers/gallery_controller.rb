@@ -42,7 +42,17 @@ class GalleryController < ApplicationController
                 :type => @picture.picture_data.content_type,
                 :disposition => 'inline')
     else
-      render :text => "Alternative Image Sizes Not Implemented", :status => 501 
+      geometry = @@geometry[params[:size]]
+      if geometry.nil?
+        render :text => "Arbitrary image geometry not currently implemented.", :status => 501
+      else
+        image = Magick::Image.from_blob(@picture.picture_data.data).first
+        image.change_geometry!(geometry) {|cols,rows,img| img.resize!(cols,rows)}
+        send_data(image.to_blob, 
+                  :filename => @picture.filename,
+                  :type => @picture.picture_data.content_type,
+                  :disposition => 'inline')
+      end
     end
   end
 
@@ -51,6 +61,8 @@ class GalleryController < ApplicationController
   def protect?; false; end
 
   private 
+
+  @@geometry = {'large' => '500x500', 'thumbnail' => '90x90'}
   
   def find_user
     user = User.find(:first, :conditions => ['name = ?', params[:user]])

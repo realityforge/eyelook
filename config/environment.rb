@@ -53,6 +53,7 @@ end
 # end
 
 require 'taggable'
+require 'RMagick'
 
 Inflector.inflections do |inflect|
   inflect.uncountable %w( picture_data )
