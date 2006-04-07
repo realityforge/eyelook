@@ -5,11 +5,8 @@
 
   def render_binary(filename)
     data = File.open(filename,'rb').read
-    e = YAML::Emitter.new({})
-    e.start_object('X')
-    output = e.binary_base64(data).gsub(/\n/,"\n    ")
-    e.end_object
-    output
+    base64ed_data = [data].pack('m').gsub(/\n/,"\n    ")
+    "!binary | #{base64ed_data}\n"
   end
 %>
 picture_data_1:
@@ -20,3 +17,9 @@ picture_data_2:
   id: 2
   picture_id: 2
   data: <%= fixture_data("picture_data_2.gif") %>
+<% 3.upto(15) do |index| %>
+picture_data_<%= index %>:
+  id: <%= index %>
+  picture_id: <%= index %>
+  data: <%= fixture_data("picture_data_#{(index%2) + 1}.#{(((index%2) + 1) == 1) ? 'jpg' : 'gif'}") %>
+<% end %>

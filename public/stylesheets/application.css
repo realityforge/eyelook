@@ -8,15 +8,18 @@ ul.thumbnails
   list-style-type: none;
   padding: 0;
   margin: 0;
-  width: 36em;
-  height: 36em;
-  float: left;
+  width: 33em;
+  height: 39em;
   border: 1px solid black;
+}
+
+ul.thumbnails li
+{ 
+  float: left;
 }
 
 ul.thumbnails li a
 { 
-  float: left;
   display: block;
   text-decoration: none;
   width: 10em;
@@ -30,8 +33,9 @@ ul.thumbnails li a:hover
   background-color: red;
 }
 
-ul.thumbnails li a img, ul.thumbnails li a h4
+ul.thumbnails li a img, ul.thumbnails li a span
 { 
+  font-weight: bold;
   font-size: 140%;
   margin: 0;
   border: 0; 

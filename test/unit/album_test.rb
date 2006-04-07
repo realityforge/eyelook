@@ -17,7 +17,7 @@ class AlbumTest < Test::Unit::TestCase
     assert_equal 1, albums(:albums_1).higher_item.position
     assert_equal 1, albums(:albums_1).user.id
 
-    assert_equal 2, albums(:albums_1).pictures.size
+    assert_equal 15, albums(:albums_1).pictures.size
     assert_equal 1, albums(:albums_1).pictures[0].position
     assert_equal 2, albums(:albums_1).pictures[0].id
     assert_equal 2, albums(:albums_1).pictures[1].position

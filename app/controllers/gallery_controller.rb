@@ -23,7 +23,7 @@ class GalleryController < ApplicationController
     @picture_pages, @pictures = paginate(:pictures, 
                                          :conditions => ['album_id = ?', @album.id],
                                          :order_by => 'position',
-                                         :per_page => 20)
+                                         :per_page => 9)
   end
 
   def show_picture

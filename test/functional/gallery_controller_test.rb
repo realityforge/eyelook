@@ -44,9 +44,10 @@ class GalleryControllerTest < Test::Unit::TestCase
     assert_not_nil(assigns(:picture_pages))
     assert_equal(users(:users_1).id,assigns(:user).id)
     assert_equal(albums(:albums_1).id,assigns(:album).id)
-    assert_equal(2,assigns(:pictures).length)
+    assert_equal(9,assigns(:pictures).length)
     assert_equal(pictures(:pictures_2).id,assigns(:pictures)[0].id)
     assert_equal(pictures(:pictures_1).id,assigns(:pictures)[1].id)
+    assert_equal(pictures(:pictures_3).id,assigns(:pictures)[2].id)
     assert_nil(flash[:alert])
     assert_nil(flash[:notice])
   end
