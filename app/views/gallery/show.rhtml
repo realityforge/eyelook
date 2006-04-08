@@ -6,15 +6,15 @@
   <li><%= render(:partial => 'thumbnail', :locals => {:picture => picture}) %></li>
   <% end %>
 </ul>
-<ol>
+<ol class="navigation">
  <% if @picture_pages.current.previous %>
- <li class="arrows first enabled"><%= link_to( '<span>First</span>', :picture => @picture_pages.first.offset + 1) %></li>
- <li class="arrows previous enabled"><%= link_to( '<span>Previous</span>', :picture => @picture_pages.current.previous.offset + 1) %></li>
+ <li class="first-enabled"><%= link_to( '<span>First</span>', :picture => @picture_pages.first.offset + 1) %></li>
+ <li class="previous-enabled"><%= link_to( '<span>Previous</span>', :picture => @picture_pages.current.previous.offset + 1) %></li>
  <% else %>
- <li class="arrows first disabled"><span>First</span></li>
- <li class="arrows previous disabled"><span>Previous</span></li>
+ <li class="first-disabled"><span>First</span></li>
+ <li class="previous-disabled"><span>Previous</span></li>
  <% end %>
- <li class="page_description"><span><%= 
+ <li class="page-description"><span><%= 
 if @picture_pages.item_count == 0 
   "0 to 0 of 0" 
 else
@@ -22,11 +22,11 @@ else
 end 
 %></span></li>
  <% if @picture_pages.current.next %>
- <li class="arrows next enabled"><%= link_to( '<span>Next</span>', :picture => @picture_pages.current.next.offset + 1) %></li>
- <li class="arrows last enabled"><%= link_to( '<span>Last</span>', :picture => @picture_pages.last.offset + 1) %></li>
+ <li class="next-enabled"><%= link_to( '<span>Next</span>', :picture => @picture_pages.current.next.offset + 1) %></li>
+ <li class="last-enabled"><%= link_to( '<span>Last</span>', :picture => @picture_pages.last.offset + 1) %></li>
  <% else %>
- <li class="arrows previous disabled"><span>Next</span></li>
- <li class="arrows last disabled"><span>Last</span></li>
+ <li class="previous-disabled"><span>Next</span></li>
+ <li class="last-disabled"><span>Last</span></li>
  <% end %>
 </ol>  
 </div>

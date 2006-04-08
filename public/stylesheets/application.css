@@ -20,9 +20,12 @@ body
   clear: both;
 }
 
-h1 {text-align: center;}
+h1 {text-align: center; font-size: 200%;}
 
-div.thumbnails ol
+/*
+ * Navigation/Pagination styling
+ */
+ol.navigation
 { 
   list-style-type: none;
   padding: 0;
@@ -31,9 +34,10 @@ div.thumbnails ol
   width: 33em;
   height: 4.7em;
   border: 0;
+  clear: both;
 }
 
-div.thumbnails ol li
+ol.navigation li
 { 
   float: left;
   display: block;
@@ -43,27 +47,31 @@ div.thumbnails ol li
   margin: 0;
 }
 
-div.thumbnails ol li.page_description {width: 14em;}
-div.thumbnails ol li.page_description span {display: block; margin-top: 0.9em; font-size: 160%; font-weight: bold;}
 
-div.thumbnails ol li.arrows a span, div.thumbnails ol li.arrows.disabled span {display: none;}
-div.thumbnails ol li.arrows a, div.thumbnails ol li.arrows.disabled
+ol.navigation li.arrows a span, ol li span {display: none;}
+ol.navigation li a, ol.navigation li
 { 
   display: block;
   height: 4.5em;
   width: 4.5em;
+  margin: 0;
+  padding: 0;
   background-repeat: no-repeat;
   background-position: left;
-  color: white;
-  text-decoration: none;
 }
 
-div.thumbnails ol li.arrows a {padding: 0;}
+ol.navigation li.page-description {width: 14em;}
+ol.navigation li.page-description span {display: block; margin-top: 0.9em; font-size: 160%; font-weight: bold;}
 
-div.thumbnails ol li.arrows.first.enabled {background-image: url(../images/navigation/first.gif);}
-div.thumbnails ol li.arrows.previous.enabled {background-image: url(../images/navigation/previous.gif);}
-div.thumbnails ol li.arrows.next.enabled {background-image: url(../images/navigation/next.gif);}
-div.thumbnails ol li.arrows.last.enabled {background-image: url(../images/navigation/last.gif);}
+ol.navigation li a {padding: 0;}
+ol.navigation li.first-enabled {background-image: url(../images/navigation/first.gif);}
+ol.navigation li.previous-enabled {background-image: url(../images/navigation/previous.gif);}
+ol.navigation li.next-enabled {background-image: url(../images/navigation/next.gif);}
+ol.navigation li.last-enabled {background-image: url(../images/navigation/last.gif);}
+
+/*
+ * Thumbnails display.
+ */
 
 div.thumbnails ul
 { 
@@ -86,7 +94,7 @@ div.thumbnails ul li a
   text-decoration: none;
   width: 10em;
   height: 12em;
-  padding: 0.5em;
+  padding: 0;
   margin: 0;
 }
 
@@ -157,14 +165,14 @@ div.picture div.metadata div.tags, div.picture div.metadata div.operations
   width: 29em;
 }
 
-div.picture div.metadata div.tags ul
+div.metadata div.tags ul
 {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-div.picture div.metadata div.tags p, div.picture div.metadata div.tags ul li, div.picture div.metadata div.operations p, div.picture div.metadata div.operations ul li
+div.metadata div.tags p, div.metadata div.tags ul li, div.metadata div.operations p, div.metadata div.operations ul li
 { 
   display: block;
   float: left;
@@ -172,7 +180,7 @@ div.picture div.metadata div.tags p, div.picture div.metadata div.tags ul li, di
   margin: 0;
 }
 
-div.picture div.metadata p.description
+div.metadata p.description
 { 
   border-top: 1px solid black;
   border-bottom: 1px solid black;
@@ -180,23 +188,66 @@ div.picture div.metadata p.description
   padding: 1.5em;
 }
 
-div.picture div.metadata div.tags p, div.picture div.metadata div.operations p, div.picture div.metadata div.operations ul li, div.picture div.metadata div.tags ul li {font-size: 140%;}
+div.metadata div.tags p, div.metadata div.operations p, div.metadata div.operations ul li, div.metadata div.tags ul li {font-size: 140%;}
 
-div.picture div.metadata div.tags p, div.picture div.metadata div.operations p
+div.metadata div.tags p, div.metadata div.operations p
 { 
   font-weight: bold;
 }
 
-div.picture div.metadata div.operations ul
+div.metadata div.operations ul
 {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-div.picture div.metadata div.operations ul li
+div.metadata div.operations ul li
 { 
   margin: 0;
   padding-left: 1em;
   float: left;
+}
+
+div.albums ul
+{ 
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+div.albums ul li.album
+{ 
+  display: block;
+  width: 30em;
+  height: 20em;
+  margin: 0;
+  padding: 0.5em;
+}
+
+div.albums ul li.album {float: left;}
+div.albums ul li.album a {display: block; width: 10em; height: 10em; text-align: center;}
+div.albums ul li.album a img {border: 0;}
+div.albums h3 {text-align: center; font-size: 140%;}
+
+div.albums ul li.album div.metadata 
+{
+  position: relative; 
+  width: 19.5em;
+  top: -10em;
+  left: 10em;
+  margin: 0;
+  padding: 0;
+}
+
+div.albums ul li.album div.date
+{ 
+  font-weight: bold;
+  font-size: 140%;
+  margin-bottom: 0.5em;
+}
+
+#gallery__list ol.navigation
+{ 
+  margin: 0 auto;
 }

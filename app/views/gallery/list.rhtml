@@ -1,7 +1,45 @@
 <% @page_title = "#{@user.name}'s Photo Albums" %>
 <h1><%= @page_title %></h1>
+<div class="albums">
 <ul>
   <% for album in @albums %>
-  <li><%= link_to(album.caption, :user => params[:user], :album => album.permalink, :action => 'show') %></li>
+  <li class="album">
+  <h3><%= h(album.caption) %></h3>
+  <a href="<%= url_for(:user => params[:user], :album => album.permalink, :action => 'show') %>" title="<%= h(album.caption) %>"><img src="<%= url_for(:action => 'show_image', :user => params[:user], :album => album.permalink, :size => 'thumbnail', :picture => album.pictures[0].filename) %>" alt="<%= h(album.caption) %>"/></a>
+<div class="metadata">
+<div class="date"><%= album.created_at.strftime('%b %d, %Y') %></div>
+<p class="description"><%= album.description %></p>
+<% if album.tags.size > 0 %>
+<div class="tags">
+<p>Tags:</p>
+<ul><% for tag in album.tags %><li><%= h(tag.name) %></li><% end %></ul>
+</div>
+<% end %>
+</div>
+  </li>
   <% end %>
 </ul>
+</div>
+<ol class="navigation">
+ <% if @album_pages.current.previous %>
+ <li class="first-enabled"><%= link_to( '<span>First</span>', :page => @album_pages.first) %></li>
+ <li class="previous-enabled"><%= link_to( '<span>Previous</span>', :page => @album_pages.current.previous) %></li>
+ <% else %>
+ <li class="first-disabled"><span>First</span></li>
+ <li class="previous-disabled"><span>Previous</span></li>
+ <% end %>
+ <li class="page-description"><span><%= 
+if @album_pages.item_count == 0 
+  "0 to 0 of 0" 
+else
+  "#{@album_pages.current.first_item} to #{@album_pages.current.last_item} of #{@album_pages.item_count}"
+end 
+%></span></li>
+ <% if @album_pages.current.next %>
+ <li class="next-enabled"><%= link_to( '<span>Next</span>', :page => @album_pages.current.next) %></li>
+ <li class="last-enabled"><%= link_to( '<span>Last</span>', :page => @album_pages.last) %></li>
+ <% else %>
+ <li class="previous-disabled"><span>Next</span></li>
+ <li class="last-disabled"><span>Last</span></li>
+ <% end %>
+</ol>
