@@ -20,26 +20,23 @@ class GalleryController < ApplicationController
   def show
     @user = find_user
     @album = find_album
+    index = params[:picture].to_i
+    @picture = find_picture(index)
+    params[:page] = ((index - 1) / 9) + 1
     @picture_pages, @pictures = paginate(:pictures, 
                                          :conditions => ['album_id = ?', @album.id],
                                          :order_by => 'position',
                                          :per_page => 9)
   end
 
-  def show_picture
-    @user = find_user
-    @album = find_album
-    @picture = find_picture
-  end
-
   def show_image
     disposition = (params[:disposition] == 'download') ? 'download' : 'inline'
     @user = find_user
     @album = find_album
-    @picture = find_picture
+    @picture = find_picture(params[:picture].gsub(/\.\w+$/,''))
     if params[:size] == 'original'
       send_data(@picture.picture_data.data, 
-                :filename => "#{@album.permalink}_#{@picture.filename}",
+                :filename => "#{@picture.filename}",
                 :type => @picture.content_type,
                 :disposition => disposition)
     else
@@ -63,7 +60,7 @@ class GalleryController < ApplicationController
 
   private 
 
-  @@geometry = {'large' => '400x400', 'thumbnail' => '100x100'}
+  @@geometry = {'large' => '350x350', 'thumbnail' => '100x100'}
   
   def find_user
     user = User.find(:first, :conditions => ['name = ?', params[:user]])
@@ -77,9 +74,9 @@ class GalleryController < ApplicationController
     album
   end
 
-  def find_picture
-    picture = @album.pictures[params[:picture].gsub(/\.\w+$/,'').to_i - 1]
-    raise ActiveRecord::RecordNotFound, "Couldn't find Picture with position = #{params[:picture]} AND album.permalink = #{params[:album]} AND user.name = #{params[:user]}" unless picture
+  def find_picture(position)
+    picture = @album.pictures[position.to_i - 1]
+    raise ActiveRecord::RecordNotFound, "Couldn't find Picture with position = #{position} AND album.permalink = #{params[:album]} AND user.name = #{params[:user]}" unless picture
     picture
   end
   

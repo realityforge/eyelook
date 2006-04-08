@@ -1,8 +1,46 @@
-<% @page_title = "#{@user.name}: #{@album.caption}" %>
-<h1><%= @page_title %></h1>
-<ul class="thumbnails">
+<% @page_title = "#{@user.name}: #{@album.caption} - #{@picture.caption}" %>
+<h1><%= "#{@user.name}: #{@album.caption}" %></h1>
+<div class="thumbnails">
+<ul>
   <% for picture in @pictures %>
   <li><%= render(:partial => 'thumbnail', :locals => {:picture => picture}) %></li>
   <% end %>
 </ul>
+<ol>
+ <% if @picture_pages.current.previous %>
+ <li class="arrows first"><%= link_to( '<span>First</span>', :picture => @picture_pages.first.offset + 1) %></li>
+ <li class="arrows previous"><%= link_to( '<span>Previous</span>', :picture => @picture_pages.current.previous.offset + 1) %></li>
+ <% else %>
+ <li class="arrows first disabled"><span>First</span></li>
+ <li class="arrows previous disabled"><span>Previous</span></li>
+ <% end %>
+ <li class="page_description"><span><%= 
+if @picture_pages.item_count == 0 
+  "0 to 0 of 0" 
+else
+  "#{@picture_pages.current.first_item} to #{@picture_pages.current.last_item} of #{@picture_pages.item_count}"
+end 
+%></span></li>
+ <% if @picture_pages.current.next %>
+ <li class="arrows next"><%= link_to( '<span>Next</span>', :picture => @picture_pages.current.next.offset + 1) %></li>
+ <li class="arrows last"><%= link_to( '<span>Last</span>', :picture => @picture_pages.last.offset + 1) %></li>
+ <% else %>
+ <li class="arrows previous disabled"><span>Next</span></li>
+ <li class="arrows last disabled"><span>Last</span></li>
+ <% end %>
+</ol>  
+</div>
+<div class="picture">
+<% image_options = {:action => 'show_image', :user => params[:user], :album => params[:album], :picture => @picture.filename} %>
+<a href="<%= url_for(image_options.dup.merge(:size => 'original')) %>" rel="lightbox" title="<%= h(@picture.caption) %>"><img src="<%= url_for(image_options.dup.merge(:size => 'large')) %>" alt="<%= h(@picture.caption) %>"/></a>
+<h3><%= h(@picture.caption) %></h3>
+<p class="description"><%= @picture.description %></p>
+<% if @picture.tags.size > 0 %>
+<p>Tags:</p>
+<ul><% for tag in @picture.tags %><li><%= h(tag.name) %></li><% end %></ul>
+<% end %>
+<%= link_to('View Original', image_options.dup.merge(:size => 'original')) %>
+<%= link_to('Download', image_options.dup.merge(:size => 'original', :disposition => 'download')) %>
+</div>
+<br/>
 <%= link_to('Return to Album List', :action => 'list', :user => params[:user], :page => to_page(@album.position, 20) ) %>

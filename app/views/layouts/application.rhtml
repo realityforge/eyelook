@@ -29,10 +29,12 @@
 
 <div id="content"><%= @content_for_layout %></div>
 
+<div id="footer">
 <% if RAILS_ENV == 'development' %>
 <center>
 <button onclick="show_debug_popup(); return false;">Show debug popup</button></center>
 <%= debug_popup %>
 <% end %>
+</div>
 </body>
 </html>

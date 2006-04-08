@@ -3,7 +3,54 @@ body
   font-size: 62.5%;
 }
 
-ul.thumbnails
+div.thumbnails ol
+{ 
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 1px;
+  width: 33em;
+  height: 4.7em;
+  border: 1px solid black;
+}
+
+div.thumbnails ol li
+{ 
+  float: left;
+  display: block;
+  width: 4.5em;
+  height: 4.5em;
+  padding: 0.1em;
+  margin: 0;
+}
+
+div.thumbnails ol li.page_description {width: 14em;}
+div.thumbnails ol li.page_description span {font-size: 140%}
+
+div.thumbnails ol li.arrows a span, div.thumbnails ol li.arrows.disabled span {display: none;}
+div.thumbnails ol li.arrows a, div.thumbnails ol li.arrows.disabled
+{ 
+  display: block;
+  height: 4.5em;
+  width: 4.5em;
+  background-repeat: no-repeat;
+  background-position: left;
+  color: white;
+  text-decoration: none;
+}
+
+div.thumbnails ol li.arrows a {padding: 0;}
+
+div.thumbnails ol li.arrows.first {background-image: url(../images/navigation/first.gif);}
+div.thumbnails ol li.arrows.previous {background-image: url(../images/navigation/previous.gif);}
+div.thumbnails ol li.arrows.next {background-image: url(../images/navigation/next.gif);}
+div.thumbnails ol li.arrows.last {background-image: url(../images/navigation/last.gif);}
+div.thumbnails ol li.arrows.first.disabled {background-image: url(../images/navigation/first-disabled.gif);}
+div.thumbnails ol li.arrows.previous.disabled {background-image: url(../images/navigation/previous-disabled.gif);}
+div.thumbnails ol li.arrows.next.disabled {background-image: url(../images/navigation/next-disabled.gif);}
+div.thumbnails ol li.arrows.last.disabled {background-image: url(../images/navigation/last-disabled.gif);}
+
+div.thumbnails ul
 { 
   list-style-type: none;
   padding: 0;
@@ -13,12 +60,12 @@ ul.thumbnails
   border: 1px solid black;
 }
 
-ul.thumbnails li
+div.thumbnails ul li
 { 
   float: left;
 }
 
-ul.thumbnails li a
+div.thumbnails ul li a
 { 
   display: block;
   text-decoration: none;
@@ -28,12 +75,12 @@ ul.thumbnails li a
   margin: 0;
 }
 
-ul.thumbnails li a:hover
+div.thumbnails ul li a:hover
 { 
   background-color: red;
 }
 
-ul.thumbnails li a img, ul.thumbnails li a span
+div.thumbnails ul li a img, div.thumbnails ul li a span
 { 
   font-weight: bold;
   font-size: 140%;
@@ -43,7 +90,18 @@ ul.thumbnails li a img, ul.thumbnails li a span
   color: black;
 }
 
-div.thumbnail
+div.thumbnails
 {
+  float: left;
   text-align: center;
+}
+
+div.picture
+{ 
+  float: left;
+}
+
+#footer
+{ 
+  clear: both;
 }
