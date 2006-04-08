@@ -1,10 +1,12 @@
 class AddPictures < ActiveRecord::Migration
   def self.up
     create_table 'pictures', :force => true do |t|
-      t.column 'album_id', :integer
+      t.column 'album_id', :integer, :null => false
       t.column 'caption', :string, :limit => 50, :null => false
       t.column 'description', :text
       t.column 'content_type', :string, :limit => 25, :null => false
+      t.column 'width', :integer, :null => false
+      t.column 'height', :integer, :null => false
       t.column 'position', :integer, :null => false
       t.column 'created_at', :datetime, :null => false
       t.column 'updated_at', :datetime, :null => false

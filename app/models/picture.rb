@@ -14,7 +14,15 @@ class Picture < ActiveRecord::Base
   end
   
   def data=(data_field)
+    data = data_field.read
+    image = Magick::Image.from_blob(data).first
+    self.width = image.columns
+    self.height = image.rows
     self.content_type = data_field.content_type.chomp
-    self.picture_data = PictureData.new(:picture_id => id, :data => data_field.read)
+    self.picture_data = PictureData.new(:picture_id => id, :data => data)
+  end
+
+  def to_image
+    Magick::Image.from_blob(self.picture_data.data).first
   end
 end

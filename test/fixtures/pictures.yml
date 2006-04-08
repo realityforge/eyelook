@@ -4,6 +4,8 @@ pictures_1:
   caption: 'Go "baby"! Go!'
   description: 'Nobody fucks with the Jesus - this is why!'
   content_type: 'image/jpg'
+  width: 204
+  height: 300
   position: 2
   created_at: '2005-10-20 00:00:00'
   updated_at: '2005-10-20 00:00:00'
@@ -13,17 +15,23 @@ pictures_2:
   caption: 'Blah'
   description: 'Insert description here'
   content_type: 'image/gif'
+  width: 20
+  height: 15
   position: 1
   created_at: '2005-10-20 00:00:00'
   updated_at: '2005-10-20 00:00:00'
-<% 3.upto(15) do |index| %>
+<% 3.upto(15) do |index| 
+     is_jpg =  (((index%2) + 1) == 1)
+%>
 pictures_<%= index %>:
   id: <%= index %>
   album_id: 1
   caption: 'Picture <%= index %>'
   description: 'Picture <%= index %> Description'
-  content_type: "image/<%= (((index%2) + 1) == 1) ? 'jpg' : 'gif' %>"
+  content_type: "image/<%= is_jpg ? 'jpg' : 'gif' %>"
   position: <%= index %>
+  width: <%= is_jpg ? 204 : 20 %>
+  height: <%= is_jpg ? 300 : 15 %>
   created_at: '2005-10-20 00:00:00'
   updated_at: '2005-10-20 00:00:00'
 <% end %>
@@ -35,6 +43,8 @@ pictures_<%= index %>:
   description: 'Picture <%= index %> Description'
   content_type: "image/gif"
   position: <%= index - 15 %>
+  width: 20
+  height: 15
   created_at: '2005-10-20 00:00:00'
   updated_at: '2005-10-20 00:00:00'
 <% end %>

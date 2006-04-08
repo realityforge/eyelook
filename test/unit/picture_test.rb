@@ -18,6 +18,8 @@ class PictureTest < Test::Unit::TestCase
     assert_equal 'Go "baby"! Go!', pictures(:pictures_1).caption
     assert_equal 'Nobody fucks with the Jesus - this is why!', pictures(:pictures_1).description
     assert_equal 'image/jpg', pictures(:pictures_1).content_type
+    assert_equal 204, pictures(:pictures_1).width
+    assert_equal 300, pictures(:pictures_1).height
     assert_equal 2, pictures(:pictures_1).position
     assert_not_nil pictures(:pictures_1).created_at
     assert_not_nil pictures(:pictures_1).updated_at
@@ -35,9 +37,12 @@ class PictureTest < Test::Unit::TestCase
 
   def test_data_setter
     picture = Picture.new
-    picture.data = FakeFile.new('C:\a\file.txt','text/plain','ABCDEFGHIJKLMNOPQRSTUVWXYZ')
-    assert_equal('text/plain', picture.content_type)
-    assert_equal('ABCDEFGHIJKLMNOPQRSTUVWXYZ', picture.picture_data.data)
+    image_data = File.open("#{RAILS_ROOT}/test/fixtures/picture_data_2.gif",'rb').read
+    picture.data = FakeFile.new('C:\a\file.txt','image/gif',image_data)
+    assert_equal('image/gif', picture.content_type)
+    assert_equal(20, picture.width)
+    assert_equal(15, picture.height)
+    assert_equal(image_data, picture.picture_data.data)
   end
 
   def test_filename
