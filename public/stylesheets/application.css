@@ -1,7 +1,25 @@
 body 
 { 
   font-size: 62.5%;
+  font-family: verdana, tahoma, arial, helvetica, sans-serif;
+  background-color: #E0E0E0;
 }
+
+#content
+{ 
+  width: 64em;
+  margin: 0;
+  padding: 0.5em;
+  background-color: #FFFFFF;
+  border: 1px solid black;
+}
+
+#footer
+{ 
+  clear: both;
+}
+
+h1 {text-align: center;}
 
 div.thumbnails ol
 { 
@@ -11,7 +29,7 @@ div.thumbnails ol
   margin-top: 1px;
   width: 33em;
   height: 4.7em;
-  border: 1px solid black;
+  border: 0;
 }
 
 div.thumbnails ol li
@@ -25,7 +43,7 @@ div.thumbnails ol li
 }
 
 div.thumbnails ol li.page_description {width: 14em;}
-div.thumbnails ol li.page_description span {font-size: 140%}
+div.thumbnails ol li.page_description span {display: block; margin-top: 0.9em; font-size: 160%; font-weight: bold;}
 
 div.thumbnails ol li.arrows a span, div.thumbnails ol li.arrows.disabled span {display: none;}
 div.thumbnails ol li.arrows a, div.thumbnails ol li.arrows.disabled
@@ -41,14 +59,10 @@ div.thumbnails ol li.arrows a, div.thumbnails ol li.arrows.disabled
 
 div.thumbnails ol li.arrows a {padding: 0;}
 
-div.thumbnails ol li.arrows.first {background-image: url(../images/navigation/first.gif);}
-div.thumbnails ol li.arrows.previous {background-image: url(../images/navigation/previous.gif);}
-div.thumbnails ol li.arrows.next {background-image: url(../images/navigation/next.gif);}
-div.thumbnails ol li.arrows.last {background-image: url(../images/navigation/last.gif);}
-div.thumbnails ol li.arrows.first.disabled {background-image: url(../images/navigation/first-disabled.gif);}
-div.thumbnails ol li.arrows.previous.disabled {background-image: url(../images/navigation/previous-disabled.gif);}
-div.thumbnails ol li.arrows.next.disabled {background-image: url(../images/navigation/next-disabled.gif);}
-div.thumbnails ol li.arrows.last.disabled {background-image: url(../images/navigation/last-disabled.gif);}
+div.thumbnails ol li.arrows.first.enabled {background-image: url(../images/navigation/first.gif);}
+div.thumbnails ol li.arrows.previous.enabled {background-image: url(../images/navigation/previous.gif);}
+div.thumbnails ol li.arrows.next.enabled {background-image: url(../images/navigation/next.gif);}
+div.thumbnails ol li.arrows.last.enabled {background-image: url(../images/navigation/last.gif);}
 
 div.thumbnails ul
 { 
@@ -57,7 +71,7 @@ div.thumbnails ul
   margin: 0;
   width: 33em;
   height: 39em;
-  border: 1px solid black;
+  border: 0;
 }
 
 div.thumbnails ul li
@@ -93,15 +107,108 @@ div.thumbnails ul li a img, div.thumbnails ul li a span
 div.thumbnails
 {
   float: left;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
 div.picture
 { 
   float: left;
+  margin: 0;
+  padding: 0;
 }
 
-#footer
+div.picture h3
+{ 
+  text-align: center;
+}
+
+div.picture a.image
+{
+  display: block;
+  width: 31em;
+  height: 31em;
+  text-align: center;
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+div.picture a.image img
+{ 
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+div.picture div.metadata
+{ 
+  margin: 1em;
+}
+
+div.picture div.metadata div.tags
+{ 
+  margin: 0;
+  padding: 0;
+  padding-top: 1em;
+}
+
+div.picture div.metadata div.tags ul
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+div.picture div.metadata div.tags p, div.picture div.metadata div.tags ul li, div.picture div.metadata div.operations p, div.picture div.metadata div.operations ul li
+{ 
+  display: block;
+  float: left;
+  padding-left: 0.5em;
+  margin: 0;
+}
+
+div.picture div.metadata p.description
+{ 
+  border-top: 1px solid black;
+  border-bottom: 1px solid black;
+  margin: 0;
+  padding: 1.5em;
+}
+
+div.picture div.metadata div.tags p, div.picture div.metadata div.operations p, div.picture div.metadata div.operations ul li, div.picture div.metadata div.tags ul li {font-size: 140%;}
+
+div.picture div.metadata div.tags p, div.picture div.metadata div.operations p
+{ 
+  font-weight: bold;
+}
+
+div.picture div.metadata div.operations
 { 
   clear: both;
+  margin: 0;
+  padding: 0;
+}
+
+
+div.picture div.metadata div.operations
+{ 
+  margin: 0;
+  padding: 0;
+  padding-top: 1em;
+}
+
+div.picture div.metadata div.operations ul
+{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+div.picture div.metadata div.operations ul li
+{ 
+  margin: 0;
+  padding-left: 1em;
+  float: left;
 }

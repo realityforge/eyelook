@@ -8,8 +8,8 @@
 </ul>
 <ol>
  <% if @picture_pages.current.previous %>
- <li class="arrows first"><%= link_to( '<span>First</span>', :picture => @picture_pages.first.offset + 1) %></li>
- <li class="arrows previous"><%= link_to( '<span>Previous</span>', :picture => @picture_pages.current.previous.offset + 1) %></li>
+ <li class="arrows first enabled"><%= link_to( '<span>First</span>', :picture => @picture_pages.first.offset + 1) %></li>
+ <li class="arrows previous enabled"><%= link_to( '<span>Previous</span>', :picture => @picture_pages.current.previous.offset + 1) %></li>
  <% else %>
  <li class="arrows first disabled"><span>First</span></li>
  <li class="arrows previous disabled"><span>Previous</span></li>
@@ -22,8 +22,8 @@ else
 end 
 %></span></li>
  <% if @picture_pages.current.next %>
- <li class="arrows next"><%= link_to( '<span>Next</span>', :picture => @picture_pages.current.next.offset + 1) %></li>
- <li class="arrows last"><%= link_to( '<span>Last</span>', :picture => @picture_pages.last.offset + 1) %></li>
+ <li class="arrows next enabled"><%= link_to( '<span>Next</span>', :picture => @picture_pages.current.next.offset + 1) %></li>
+ <li class="arrows last enabled"><%= link_to( '<span>Last</span>', :picture => @picture_pages.last.offset + 1) %></li>
  <% else %>
  <li class="arrows previous disabled"><span>Next</span></li>
  <li class="arrows last disabled"><span>Last</span></li>
@@ -32,15 +32,26 @@ end
 </div>
 <div class="picture">
 <% image_options = {:action => 'show_image', :user => params[:user], :album => params[:album], :picture => @picture.filename} %>
-<a href="<%= url_for(image_options.dup.merge(:size => 'original')) %>" rel="lightbox" title="<%= h(@picture.caption) %>"><img src="<%= url_for(image_options.dup.merge(:size => 'large')) %>" alt="<%= h(@picture.caption) %>"/></a>
 <h3><%= h(@picture.caption) %></h3>
+<a href="<%= url_for(image_options.dup.merge(:size => 'original')) %>" rel="lightbox" title="<%= h(@picture.caption) %>" class="image"><img src="<%= url_for(image_options.dup.merge(:size => 'large')) %>" alt="<%= h(@picture.caption) %>"/></a>
+
+<div class="metadata">
 <p class="description"><%= @picture.description %></p>
 <% if @picture.tags.size > 0 %>
+<div class="tags">
 <p>Tags:</p>
 <ul><% for tag in @picture.tags %><li><%= h(tag.name) %></li><% end %></ul>
-<% end %>
-<%= link_to('View Original', image_options.dup.merge(:size => 'original')) %>
-<%= link_to('Download', image_options.dup.merge(:size => 'original', :disposition => 'download')) %>
 </div>
-<br/>
+<% end %>
+<div class="operations">
+<p>Actions:</p>
+<ul>
+<li><%= link_to('View Original', image_options.dup.merge(:size => 'original')) %></li>
+<li><%= link_to('Download', image_options.dup.merge(:size => 'original', :disposition => 'download')) %></li>
+</ul>
+</div>
+</div>
+
+</div>
+<br style="clear:both;"/>
 <%= link_to('Return to Album List', :action => 'list', :user => params[:user], :page => to_page(@album.position, 20) ) %>

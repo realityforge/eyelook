@@ -24,9 +24,6 @@
 </head>
 <body id="<%= controller.class.name.gsub(/Controller/,'').gsub(/\:\:/,'_').downcase %>__<%= @action_name %>">
 
-<% style = flash[:alert] ? " alert" : (flash[:notice] ? " notice" : "") -%>
-<div id="flash" class="<%= style %>">&nbsp;<%= flash[:alert] ? h(flash[:alert]) : h(flash[:notice]) -%></div>
-
 <div id="content"><%= @content_for_layout %></div>
 
 <div id="footer">

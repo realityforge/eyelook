@@ -23,3 +23,9 @@ picture_data_<%= index %>:
   picture_id: <%= index %>
   data: <%= fixture_data("picture_data_#{(index%2) + 1}.#{(((index%2) + 1) == 1) ? 'jpg' : 'gif'}") %>
 <% end %>
+<% 16.upto(40) do |index| %>
+picture_data_<%= index %>:
+  id: <%= index %>
+  picture_id: <%= index %>
+  data: <%= fixture_data("picture_data_#{(index%2) + 1}.#{(((index%2) + 1) == 1) ? 'jpg' : 'gif'}") %>
+<% end %>

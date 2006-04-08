@@ -60,7 +60,7 @@ class GalleryController < ApplicationController
 
   private 
 
-  @@geometry = {'large' => '350x350', 'thumbnail' => '100x100'}
+  @@geometry = {'large' => '300x300', 'thumbnail' => '100x100'}
   
   def find_user
     user = User.find(:first, :conditions => ['name = ?', params[:user]])
