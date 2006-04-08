@@ -10,3 +10,16 @@ tags_pictures_3:
 tags_pictures_4:
   tag_id: 3
   picture_id: 2
+<% 
+  counter = 4
+  3.upto(40) do |index| 
+    0.upto(index % 7) do |tag_number|
+      counter += 1
+%>
+tags_pictures_<%= counter %>:
+  tag_id: <%= tag_number + 1 %>
+  picture_id: <%= index %>
+<% 
+    end
+  end 
+%>

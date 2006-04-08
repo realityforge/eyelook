@@ -7,4 +7,15 @@ tags_2:
 tags_3:
   id: 3
   name: 'spooky'
-
+tags_4:
+  id: 4
+  name: 'ace'
+tags_5:
+  id: 5
+  name: 'jackie'
+tags_6:
+  id: 6
+  name: 'krisy'
+tags_7:
+  id: 7
+  name: 'me'

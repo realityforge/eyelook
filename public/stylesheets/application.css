@@ -147,11 +147,13 @@ div.picture div.metadata
   margin: 1em;
 }
 
-div.picture div.metadata div.tags
+div.picture div.metadata div.tags, div.picture div.metadata div.operations
 { 
+  clear: both;
   margin: 0;
   padding: 0;
   padding-top: 1em;
+  width: 29em;
 }
 
 div.picture div.metadata div.tags ul
@@ -182,21 +184,6 @@ div.picture div.metadata div.tags p, div.picture div.metadata div.operations p, 
 div.picture div.metadata div.tags p, div.picture div.metadata div.operations p
 { 
   font-weight: bold;
-}
-
-div.picture div.metadata div.operations
-{ 
-  clear: both;
-  margin: 0;
-  padding: 0;
-}
-
-
-div.picture div.metadata div.operations
-{ 
-  margin: 0;
-  padding: 0;
-  padding-top: 1em;
 }
 
 div.picture div.metadata div.operations ul
