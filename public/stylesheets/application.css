@@ -47,8 +47,7 @@ ol.navigation li
   margin: 0;
 }
 
-
-ol.navigation li.arrows a span, ol li span {display: none;}
+ol.navigation li a span, ol.navigation li span {display: none;}
 ol.navigation li a, ol.navigation li
 { 
   display: block;
@@ -100,7 +99,7 @@ div.thumbnails ul li a
 
 div.thumbnails ul li a:hover
 { 
-  background-color: red;
+  background-color: blue;
 }
 
 div.thumbnails ul li a img, div.thumbnails ul li a span
@@ -251,3 +250,39 @@ div.albums ul li.album div.date
 { 
   margin: 0 auto;
 }
+
+/*
+ * Positioning styling
+ */
+ol.positioning
+{ 
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  margin-top: 0.1em;
+  width: 4.4em;
+  height: 1.5em;
+  border: 0;
+  clear: both;
+}
+
+ol.positioning li {float: left;}
+
+ol.positioning li a span, ol.positioning li span {display: none;}
+ol.positioning li a, ol.positioning li
+{ 
+  display: block;
+  height: 1.4em;
+  width: 1.1em;
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
+ol.positioning li a {padding: 0;}
+ol.positioning li.move-first-enabled {background-image: url(../images/positioning/first.gif);}
+ol.positioning li.move-up-enabled {background-image: url(../images/positioning/up.gif);}
+ol.positioning li.move-down-enabled {background-image: url(../images/positioning/down.gif);}
+ol.positioning li.move-last-enabled {background-image: url(../images/positioning/last.gif);}
+
