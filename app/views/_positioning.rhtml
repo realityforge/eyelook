@@ -1,0 +1,32 @@
+<ol class="positioning">
+<% if index != 1 %>
+  <li class="move-first-enabled">
+  <%= link_to("<span>Move First</span>", 
+              {:action => 'move_first', :id => object}, 
+              {:title => "Move to the first position", :post => true }) %>
+  </li>
+  <li class="move-up-enabled">
+  <%= link_to("<span>Move Up</span>",
+              {:action => 'move_up', :id => object}, 
+              {:title => "Move up", :post => true }) %>
+  </li>
+<% else %>
+  <li class="move-first-disabled"><span>Move First</span></li>
+  <li class="move-up-disabled"><span>Move Up</span></li>
+<% end %>
+<% if index != object_count %>
+  <li class="move-down-enabled">
+  <%= link_to("<span>Move Down</span>",
+              {:action => 'move_down', :id => object}, 
+              {:title => "Move down", :post => true }) %>
+  </li>
+  <li class="move-last-enabled">
+  <%= link_to("<span>Move Last</span>", 
+              {:action => 'move_last', :id => object}, 
+              {:title => "Move to the last position", :post => true }) %>
+  </li>
+<% else %>
+  <li class="move-down-disabled"><span>Move Down</span></li>
+  <li class="move-last-disabled"><span>Move Last</span></li>
+<% end %>
+</ol>
