@@ -14,7 +14,7 @@ class GalleryController < ApplicationController
     @album_pages, @albums = paginate(:albums, 
                                      :conditions => ['user_id = ?', @user.id],
                                      :order_by => 'position',
-                                     :per_page => 20)
+                                     :per_page => 4)
   end
 
   def show
@@ -44,7 +44,7 @@ class GalleryController < ApplicationController
       if geometry.nil?
         render :text => "Arbitrary image geometry not currently implemented.", :status => 501
       else
-        image = Magick::Image.from_blob(@picture.picture_data.data).first
+        image = @picture.to_image
         image.change_geometry!(geometry) {|cols,rows,img| img.resize!(cols,rows)}
         send_data(image.to_blob, 
                   :filename => @picture.filename,
