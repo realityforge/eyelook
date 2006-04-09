@@ -1,0 +1,10 @@
+<%= start_form_tag %>
+<div>
+<% if flash[:notice] %>
+<div id="errorExplanation"><h2><%= flash[:notice] %></h2></div>
+<% end %>
+<label for="username">Username</label><input id="username" name="username" size="20" type="text"/>
+<label for="password">Password</label><input id="password" name="password" size="20" type="password"/>
+<button type="submit">Login</button>
+</div>
+<%= end_form_tag %>
