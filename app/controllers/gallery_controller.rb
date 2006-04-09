@@ -11,10 +11,8 @@ class GalleryController < ApplicationController
 
   def list
     @user = find_user
-    @album_pages, @albums = paginate(:albums, 
-                                     :conditions => ['user_id = ?', @user.id],
-                                     :order_by => 'position',
-                                     :per_page => 4)
+    sql = "SELECT albums.* FROM albums LEFT JOIN pictures ON pictures.album_id = albums.id WHERE (albums.user_id = #{@user.id}) GROUP BY albums.id HAVING COUNT(pictures.id) > 0 ORDER BY albums.position"
+    @album_pages, @albums = paginate_from_sql(Album, sql, 4)
   end
 
   def show
@@ -59,6 +57,13 @@ class GalleryController < ApplicationController
   def protect?; false; end
 
   private 
+
+  def paginate_from_sql(model, sql, per_page)
+    total = model.count_by_sql("SELECT count(*) AS count_all FROM (#{sql}) dummy_table")
+    object_pages = Paginator.new(self, total, per_page, params[:page])
+    objects = model.find_by_sql("#{sql} LIMIT #{per_page} OFFSET #{object_pages.current.to_sql[1]}")
+    return object_pages, objects
+  end
 
   @@geometry = {'large' => '300x300', 'thumbnail' => '100x100'}
   
