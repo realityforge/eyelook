@@ -1,0 +1,25 @@
+<% @page_title = "#{current_user.name}'s Photo Albums" %>
+<%= link_to('Create Album', {:action => 'new'}, {:title => 'Create Album'}) %>
+<table style="width: 100%;">
+  <tr>
+    <th>Caption</th>
+    <th>Date</th>
+    <th>Positioning</th>
+    <th>Operations</th>
+  </tr>
+<% 
+   index = 0
+   for album in @albums 
+     index += 1
+%>
+  <tr class="<%= cycle("even", "odd") %>">
+    <td><span title="<%= h(album.caption) %>"><%= h(album.caption) %></span></td>
+    <td><%= album.created_at.strftime('%b %d, %Y') %></td>
+    <td><%= render(:partial => '/positioning', :locals => {:object => album, :index => index, :object_count => @album_pages.last.last_item} ) %></td>
+    <td>
+    <%= link_to('View', {:action => 'show', :id => album.id}, {:title => 'View album'}) %> |
+    <%= link_to('Delete', {:action => 'destroy', :id => album.id}, {:title => 'Delete album', :post => true, :confirm => 'Are you sure you want to delete album?'} ) %>
+    </td>
+  </tr>
+<% end %>
+</table>

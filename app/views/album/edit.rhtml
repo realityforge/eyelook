@@ -1,0 +1,8 @@
+<%
+  @page_title = "#{current_user.name}: Edit Album"
+  @form_title = "Edit Album"
+  @form_action = {:action => 'edit', :id => @album.id}
+  @form_action_desc = 'Save'
+  @form_cancel_action = {:action => 'show', :id => @album.id}
+%>
+<%= render(:partial => 'form') %>

@@ -1,0 +1,13 @@
+<% @page_title = "#{current_user.name}: #{h(@album.caption)}" %>
+<div class="details">
+<dl>
+<dt>Caption</dt><dd><%= h(@album.caption) %></dd>
+<dt>Permalink</dt><dd><%= h(@album.permalink) %></dd>
+<dt>Date</dt><dd><%= h(@album.created_at.strftime('%b %d, %Y')) %></dd>
+<dt>Description</dt><dd><%= h(@album.description) %></dd>
+<dt>Tags</dt><dd><%= h(@album.tag_names.join(' ')) %></dd>
+</dl>
+<%= link_to_button('Edit', :action => 'edit', :id => @album.id) %>
+<%= link_to_button('View Pictures', :controller => 'picture', :action => 'list', :album_id => @album.id) %>
+</div>
+<%= link_to('Return to Album List', :action => 'list', :page => to_page(@album.position, 20) ) %>

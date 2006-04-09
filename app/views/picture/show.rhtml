@@ -1,0 +1,10 @@
+<% @page_title = "#{current_user.name}: #{h(@picture.album.caption)} - #{h(@picture.caption)}" %>
+<div class="details">
+<dl>
+<dt>Caption</dt><dd><%= h(@picture.caption) %></dd>
+<dt>Description</dt><dd><%= h(@picture.description) %></dd>
+<dt>Tags</dt><dd><%= h(@picture.tag_names.join(' ')) %></dd>
+</dl>
+<%= link_to_button('Edit', :action => 'edit', :id => @picture.id) %>
+</div>
+<%= link_to('Return to List', :controller => 'picture', :action => 'list', :album_id => @picture.album_id) %>

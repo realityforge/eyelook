@@ -1,0 +1,8 @@
+<%
+  @page_title = "#{current_user.name}: Create Album"
+  @form_title = "Create Album"
+  @form_action = {:action => 'new'}
+  @form_action_desc = 'Create'
+  @form_cancel_action = {:action => 'list'}
+%>
+<%= render(:partial => 'form') %>

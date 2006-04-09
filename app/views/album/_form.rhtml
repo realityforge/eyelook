@@ -1,0 +1,11 @@
+<%= start_form_tag(@form_action) %>
+<div class="form">
+  <h1><%= @form_title %></h1>
+  <%= error_messages_for('album') %>
+<label for="album_caption">Caption</label><%= text_field('album', 'caption') %>
+<label for="album_permalink">Permalink</label><%= text_field('album', 'permalink') %>
+<label for="album_description">Description</label><%= text_area('album', 'description') %>
+<button type="submit"><%= @form_action_desc %></button>
+<%= link_to_button('Cancel', @form_cancel_action) %>
+</div>
+<%= end_form_tag %>

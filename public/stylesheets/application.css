@@ -286,3 +286,23 @@ ol.positioning li.move-up-enabled {background-image: url(../images/positioning/u
 ol.positioning li.move-down-enabled {background-image: url(../images/positioning/down.gif);}
 ol.positioning li.move-last-enabled {background-image: url(../images/positioning/last.gif);}
 
+div.form label
+{ 
+  clear: left;
+  display: block;
+  width: 10em;
+  float: left;
+}
+
+div.form input, div.form textarea
+{ 
+  float: left;
+  display: block;
+  width: 20em;
+}
+
+div.form button
+{
+  display: block;
+  clear: both;
+}
