@@ -8,4 +8,11 @@ class Album < ActiveRecord::Base
 
   acts_as_list :scope => 'user_id'
   acts_as_taggable
+
+  def text_tags; tag_names.join(' '); end
+  alias :text_tags= :tag_names=
+
+  def expire_pages
+    FileUtils.rm_rf(Dir["#{RAILS_ROOT}/public/#{user.name}/#{permalink}"])
+  end
 end

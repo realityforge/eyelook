@@ -5,6 +5,7 @@
 <label for="album_caption">Caption</label><%= text_field('album', 'caption') %>
 <label for="album_permalink">Permalink</label><%= text_field('album', 'permalink') %>
 <label for="album_description">Description</label><%= text_area('album', 'description') %>
+<label for="album_text_tags">Tags</label><%= text_field('album', 'text_tags') %>
 <button type="submit"><%= @form_action_desc %></button>
 <%= link_to_button('Cancel', @form_cancel_action) %>
 </div>

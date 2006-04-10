@@ -15,6 +15,7 @@ class AlbumController < ApplicationController
     if request.post?
       @album.user_id = current_user.id
       if @album.save
+        @album.expire_pages
         flash[:notice] = 'Album was successfully created.'
         redirect_to(:action => 'show', :id => @album)
       end
@@ -29,6 +30,7 @@ class AlbumController < ApplicationController
     @album = current_user.albums.find(params[:id])
     if request.post?
       if @album.update_attributes(params[:album])
+        @album.expire_pages
         flash[:notice] = 'Album was successfully updated.'
         redirect_to(:action => 'show', :id => @album)
       end
@@ -36,7 +38,9 @@ class AlbumController < ApplicationController
   end
 
   def destroy
-    current_user.albums.find(params[:id]).destroy
+    album = current_user.albums.find(params[:id])
+    album.expire_pages
+    album.destroy
     flash[:notice] = 'Album was successfully deleted.'
     redirect_to_list
   end
@@ -44,24 +48,28 @@ class AlbumController < ApplicationController
   def move_first
     album = current_user.albums.find(params[:id])
     album.move_to_top
+    album.expire_pages
     redirect_to_list
   end
 
   def move_up
     album = current_user.albums.find(params[:id])
     album.move_higher
+    album.expire_pages
     redirect_to_list
   end
 
   def move_down
     album = current_user.albums.find(params[:id])
     album.move_lower
+    album.expire_pages
     redirect_to_list
   end
 
   def move_last
     album = current_user.albums.find(params[:id])
     album.move_to_bottom
+    album.expire_pages
     redirect_to_list
   end
 

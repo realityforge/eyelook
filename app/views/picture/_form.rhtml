@@ -1,4 +1,4 @@
-<%= start_form_tag(@form_action) %>
+<%= start_form_tag(@form_action, {:enctype => "multipart/form-data"}) %>
 <div class="form">
   <h1><%= @form_title %></h1>
   <%= error_messages_for('picture') %>
@@ -6,6 +6,10 @@
 <input type="hidden" name="album_id" value="<%= params[:album_id]%>"/>
 <label for="picture_caption">Caption</label><%= text_field('picture', 'caption') %>
 <label for="picture_description">Description</label><%= text_area('picture', 'description') %>
+<label for="picture_text_tags">Tags</label><%= text_field('picture', 'text_tags') %>
+<% if @action_name == 'new' %>
+<label for="picture_data">File</label><%= file_field('picture', 'data') %>
+<% end %>
 <button type="submit"><%= @form_action_desc %></button>
 <%= link_to_button('Cancel', @form_cancel_action) %>
 </div>

@@ -23,8 +23,8 @@
 </table>
 <ol class="navigation">
  <% if @picture_pages.current.previous %>
- <li class="first-enabled"><%= link_to( '<span>First</span>', :page => @picture_pages.first) %></li>
- <li class="previous-enabled"><%= link_to( '<span>Previous</span>', :page => @picture_pages.current.previous) %></li>
+ <li class="first-enabled"><%= link_to( '<span>First</span>', :page => @picture_pages.first, :album_id => params[:album_id]) %></li>
+ <li class="previous-enabled"><%= link_to( '<span>Previous</span>', :page => @picture_pages.current.previous, :album_id => params[:album_id]) %></li>
  <% else %>
  <li class="first-disabled"><span>First</span></li>
  <li class="previous-disabled"><span>Previous</span></li>
@@ -37,10 +37,12 @@ else
 end 
 %></span></li>
  <% if @picture_pages.current.next %>
- <li class="next-enabled"><%= link_to( '<span>Next</span>', :page => @picture_pages.current.next) %></li>
- <li class="last-enabled"><%= link_to( '<span>Last</span>', :page => @picture_pages.last) %></li>
+ <li class="next-enabled"><%= link_to( '<span>Next</span>', :page => @picture_pages.current.next, :album_id => params[:album_id]) %></li>
+ <li class="last-enabled"><%= link_to( '<span>Last</span>', :page => @picture_pages.last, :album_id => params[:album_id]) %></li>
  <% else %>
  <li class="previous-disabled"><span>Next</span></li>
  <li class="last-disabled"><span>Last</span></li>
  <% end %>
 </ol>
+
+<%= link_to('Return to Album', :controller => 'album', :action => 'show', :id => @album.id) %>

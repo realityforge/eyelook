@@ -14,7 +14,9 @@ class PictureController < ApplicationController
   def new
     @picture = Picture.new(params[:picture])
     if request.post?
+      @picture.album = current_user.albums.find(params[:album_id])
       if @picture.save
+        @picture.album.expire_pages
         flash[:notice] = 'Picture was successfully created.'
         redirect_to(:action => 'show', :id => @picture)
       end
@@ -29,6 +31,7 @@ class PictureController < ApplicationController
     @picture = find_picture(params[:id])
     if request.post?
       if @picture.update_attributes(params[:picture])
+        @picture.album.expire_pages
         flash[:notice] = 'Picture was successfully updated.'
         redirect_to(:action => 'show', :id => @picture)
       end
@@ -38,6 +41,7 @@ class PictureController < ApplicationController
   def destroy
     @picture = find_picture(params[:id])
     album_id = @picture.album_id
+    @picture.album.expire_pages
     @picture.destroy
     flash[:notice] = 'Picture was successfully deleted.'
     redirect_to_list(album_id)
@@ -46,24 +50,28 @@ class PictureController < ApplicationController
   def move_first
     @picture = find_picture(params[:id])
     @picture.move_to_top
+    @picture.album.expire_pages
     redirect_to_list
   end
 
   def move_up
     @picture = find_picture(params[:id])
     @picture.move_higher
+    @picture.album.expire_pages
     redirect_to_list
   end
 
   def move_down
     @picture = find_picture(params[:id])
     @picture.move_lower
+    @picture.album.expire_pages
     redirect_to_list
   end
 
   def move_last
     @picture = find_picture(params[:id])
     @picture.move_to_bottom
+    @picture.album.expire_pages
     redirect_to_list
   end
 

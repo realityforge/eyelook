@@ -9,6 +9,9 @@ class Picture < ActiveRecord::Base
   acts_as_taggable
   acts_as_list :scope => 'album_id'
 
+  def text_tags; tag_names.join(' '); end
+  alias :text_tags= :tag_names=
+
   def filename
     "#{position}.#{content_type.gsub(/.+\//,'')}"
   end
