@@ -6,7 +6,7 @@ class Album < ActiveRecord::Base
   validates_length_of :permalink, :in => 1...50
   validates_length_of :caption, :in => 1...50
 
-  acts_as_list :scope => 'user_id'
+  acts_as_list :scope => :user_id
   acts_as_taggable
 
   def text_tags; tag_names.join(' '); end

@@ -7,7 +7,7 @@ class Picture < ActiveRecord::Base
   validates_uniqueness_of :caption, :scope => 'album_id'
 
   acts_as_taggable
-  acts_as_list :scope => 'album_id'
+  acts_as_list :scope => :album_id
 
   def text_tags; tag_names.join(' '); end
   alias :text_tags= :tag_names=
