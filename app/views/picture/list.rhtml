@@ -13,10 +13,10 @@
 %>
   <tr class="<%= cycle("even", "odd") %>">
     <td><span title="<%= h(picture.caption) %>"><%= h(picture.caption) %></span></td>
-    <td><%= render(:partial => '/positioning', :locals => {:object => picture, :index => index, :object_count => @picture_pages.last.last_item} ) %></td>
+    <td><%= render(:partial => '/positioning', :locals => {:object => picture, :index => index, :object_count => @picture_pages.last.last_item, :extra_params => {:page => params[:page]}} ) %></td>
     <td>
     <%= link_to('View', {:action => 'show', :id => picture.id}, {:title => 'View picture'}) %> |
-    <%= link_to('Delete', {:action => 'destroy', :id => picture.id}, {:title => 'Delete picture', :post => true, :confirm => 'Are you sure you want to delete picture?'} ) %>
+    <%= link_to('Delete', {:action => 'destroy', :id => picture.id, :page => params[:page]}, {:title => 'Delete picture', :post => true, :confirm => 'Are you sure you want to delete picture?'} ) %>
     </td>
   </tr>
 <% end %>

@@ -2,12 +2,12 @@
 <% if index != 1 %>
   <li class="move-first-enabled">
   <%= link_to("<span>Move First</span>", 
-              {:action => 'move_first', :id => object}, 
+              {:action => 'move_first', :id => object}.update(extra_params),
               {:title => "Move to the first position", :post => true }) %>
   </li>
   <li class="move-up-enabled">
   <%= link_to("<span>Move Up</span>",
-              {:action => 'move_up', :id => object}, 
+              {:action => 'move_up', :id => object}.update(extra_params), 
               {:title => "Move up", :post => true }) %>
   </li>
 <% else %>
@@ -17,12 +17,12 @@
 <% if index != object_count %>
   <li class="move-down-enabled">
   <%= link_to("<span>Move Down</span>",
-              {:action => 'move_down', :id => object}, 
+              {:action => 'move_down', :id => object}.update(extra_params), 
               {:title => "Move down", :post => true }) %>
   </li>
   <li class="move-last-enabled">
   <%= link_to("<span>Move Last</span>", 
-              {:action => 'move_last', :id => object}, 
+              {:action => 'move_last', :id => object}.update(extra_params), 
               {:title => "Move to the last position", :post => true }) %>
   </li>
 <% else %>
