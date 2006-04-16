@@ -2,11 +2,19 @@
   def fixture_data(name)
     render_binary("#{RAILS_ROOT}/test/fixtures/#{name}")
   end
-
+  
+  class ActiveRecord::ConnectionAdapters::PostgreSQLAdapter < ActiveRecord::ConnectionAdapters::AbstractAdapter
+    def quote(value, column = nil)
+      if (value.kind_of?(String) && column && column.type == :binary) || (value.kind_of?(String) && value.include?(0))
+        "'#{escape_bytea(value)}'"
+      else
+        super
+      end
+    end
+  end
+  
   def render_binary(filename)
-    data = File.open(filename,'rb').read
-    base64ed_data = [data].pack('m').gsub(/\n/,"\n    ")
-    "!binary | #{base64ed_data}\n"
+    "!binary | #{[File.open(filename,'rb').read].pack('m').gsub(/\n/,"\n    ")}\n"
   end
 %>
 picture_data_1:
