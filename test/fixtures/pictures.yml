@@ -41,7 +41,7 @@ pictures_<%= index %>:
   album_id: 2
   caption: 'Picture <%= index %>'
   description: 'Picture <%= index %> Description'
-  content_type: "image/gif"
+  content_type: "image/<%= (((index%2) + 1) == 1) ? 'jpg' : 'gif' %>"
   position: <%= index - 15 %>
   width: 20
   height: 15
