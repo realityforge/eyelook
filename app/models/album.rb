@@ -11,8 +11,4 @@ class Album < ActiveRecord::Base
 
   def text_tags; tag_names.join(' '); end
   alias :text_tags= :tag_names=
-
-  def expire_pages
-    FileUtils.rm_rf(Dir["#{RAILS_ROOT}/public/#{user.name}/#{permalink}"])
-  end
 end

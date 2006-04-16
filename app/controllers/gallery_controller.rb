@@ -1,7 +1,7 @@
 class GalleryController < ApplicationController
   verify :method => :get, :only => %w( user_list list show show_picture show_image )
   session :off
-  caches_page :user_list, :list, :show, :show_picture, :show_image
+  caches_page :show_image
 
   def user_list
     @user_pages, @users = paginate(:users, 
@@ -11,7 +11,7 @@ class GalleryController < ApplicationController
 
   def list
     @user = find_user
-    sql = "SELECT albums.* FROM albums LEFT JOIN pictures ON pictures.album_id = albums.id WHERE (albums.user_id = #{@user.id}) GROUP BY albums.id HAVING COUNT(pictures.id) > 0 ORDER BY albums.position"
+    sql = "SELECT distinct albums.* FROM albums LEFT JOIN pictures ON pictures.album_id = albums.id WHERE (albums.user_id = #{@user.id}) ORDER BY albums.position"
     @album_pages, @albums = paginate_from_sql(Album, sql, 4)
   end
 

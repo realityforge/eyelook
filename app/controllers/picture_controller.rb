@@ -16,7 +16,6 @@ class PictureController < ApplicationController
     if request.post?
       @picture.album = current_user.albums.find(params[:album_id])
       if @picture.save
-        @picture.album.expire_pages
         flash[:notice] = 'Picture was successfully created.'
         redirect_to(:action => 'show', :id => @picture)
       end
@@ -31,7 +30,6 @@ class PictureController < ApplicationController
     @picture = find_picture(params[:id])
     if request.post?
       if @picture.update_attributes(params[:picture])
-        @picture.album.expire_pages
         flash[:notice] = 'Picture was successfully updated.'
         redirect_to(:action => 'show', :id => @picture)
       end
@@ -39,44 +37,29 @@ class PictureController < ApplicationController
   end
 
   def destroy
-    @picture = find_picture(params[:id])
-    album_id = @picture.album_id
-    @picture.album.expire_pages
-    @picture.destroy
+    picture = find_picture(params[:id])
+    album = picture.album
+    picture.destroy
+    expire_album(album)
     flash[:notice] = 'Picture was successfully deleted.'
-    redirect_to_list(album_id)
+    redirect_to_list(album.id)
   end
 
-  def move_first
-    @picture = find_picture(params[:id])
-    @picture.move_to_top
-    @picture.album.expire_pages
-    redirect_to_list
-  end
-
-  def move_up
-    @picture = find_picture(params[:id])
-    @picture.move_higher
-    @picture.album.expire_pages
-    redirect_to_list
-  end
-
-  def move_down
-    @picture = find_picture(params[:id])
-    @picture.move_lower
-    @picture.album.expire_pages
-    redirect_to_list
-  end
-
-  def move_last
-    @picture = find_picture(params[:id])
-    @picture.move_to_bottom
-    @picture.album.expire_pages
-    redirect_to_list
-  end
+  def move_first; move(:move_to_top); end
+  def move_up; move(:move_higher); end
+  def move_down; move(:move_lower); end
+  def move_last; move(:move_to_bottom); end
 
 private
-  def redirect_to_list(album_id = @picture.album_id)
+
+  def move(action)
+    picture = find_picture(params[:id])
+    picture.send(action)
+    expire_album(picture.album)
+    redirect_to_list(picture.album_id)
+  end
+
+  def redirect_to_list(album_id)
     redirect_to(:action => 'list', :page => params[:page], :album_id => album_id)
   end
 
