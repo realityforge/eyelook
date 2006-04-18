@@ -13,7 +13,7 @@ class Picture < ActiveRecord::Base
   alias :text_tags= :tag_names=
 
   def filename
-    "#{position}.#{content_type.gsub(/.+\//,'')}"
+    "#{id}.#{content_type.gsub(/.+\//,'')}"
   end
   
   def data=(data_field)

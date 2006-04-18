@@ -19,7 +19,9 @@ class GalleryController < ApplicationController
     @user = find_user
     @album = find_album
     index = params[:picture].to_i
-    @picture = find_picture(index)
+    @picture = @album.pictures[params[:picture].to_i - 1]
+    raise ActiveRecord::RecordNotFound, "Couldn't find Picture with position = #{params[:picture]} AND album.permalink = #{params[:album]} AND user.name = #{params[:user]}" unless @picture
+
     params[:page] = ((index - 1) / 9) + 1
     @picture_pages, @pictures = paginate(:pictures, 
                                          :conditions => ['album_id = ?', @album.id],
@@ -28,15 +30,12 @@ class GalleryController < ApplicationController
   end
 
   def show_image
-    disposition = (params[:disposition] == 'download') ? 'download' : 'inline'
-    @user = find_user
-    @album = find_album
-    @picture = find_picture(params[:picture].gsub(/\.\w+$/,''))
+    @picture = Picture.find(params[:image].gsub(/\.\w+$/,'').to_i)
     if params[:size] == 'original'
       send_data(@picture.picture_data.data, 
                 :filename => "#{@picture.filename}",
                 :type => @picture.content_type,
-                :disposition => disposition)
+                :disposition => 'inline')
     else
       geometry = @@geometry[params[:size]]
       if geometry.nil?
@@ -78,11 +77,4 @@ class GalleryController < ApplicationController
     raise ActiveRecord::RecordNotFound, "Couldn't find Album with permalink = #{params[:album]} AND user.name = #{params[:user]}" unless album
     album
   end
-
-  def find_picture(position)
-    picture = @album.pictures[position.to_i - 1]
-    raise ActiveRecord::RecordNotFound, "Couldn't find Picture with position = #{position} AND album.permalink = #{params[:album]} AND user.name = #{params[:user]}" unless picture
-    picture
-  end
-  
 end

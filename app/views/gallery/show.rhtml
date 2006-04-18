@@ -31,9 +31,8 @@ end
 </ol>  
 </div>
 <div class="picture">
-<% image_options = {:action => 'show_image', :user => params[:user], :album => params[:album], :picture => @picture.filename} %>
 <h3><%= h(@picture.caption) %></h3>
-<a href="<%= url_for(image_options.dup.merge(:size => 'original')) %>" rel="lightbox" title="<%= h(@picture.caption) %>" class="image"><img src="<%= url_for(image_options.dup.merge(:size => 'large')) %>" alt="<%= h(@picture.caption) %>"/></a>
+<a href="<%= url_for(:action => 'show_image', :image => @picture.filename, :size => 'original') %>" rel="lightbox" title="<%= h(@picture.caption) %>" class="image"><img src="<%= url_for(:action => 'show_image', :image => @picture.filename, :size => 'large') %>" alt="<%= h(@picture.caption) %>"/></a>
 
 <div class="metadata">
 <p class="description"><%= @picture.description %></p>
@@ -46,12 +45,11 @@ end
 <div class="operations">
 <p>Actions:</p>
 <ul>
-<li><%= link_to('View Original', image_options.dup.merge(:size => 'original')) %></li>
-<li><%= link_to('Download', image_options.dup.merge(:size => 'original', :disposition => 'download')) %></li>
+<li><%= link_to('View Original', :action => 'show_image', :image => @picture.filename, :size => 'original') %></li>
 </ul>
 </div>
 </div>
 
 </div>
 <br style="clear:both;"/>
-<%= link_to('Return to Album List', :action => 'list', :user => params[:user], :page => to_page(@album.position, 20) ) %>
+<%= link_to('Return to Album List', :action => 'list', :user => params[:user], :page => to_page(@album.position, 4) ) %>

@@ -92,14 +92,15 @@ div.thumbnails ul li a
   display: block;
   text-decoration: none;
   width: 10em;
-  height: 12em;
+  height: 10em;
   padding: 0;
-  margin: 0;
+  margin: 0.2em;
+  border: 0.3em solid #E0E0E0;
 }
 
 div.thumbnails ul li a:hover
 { 
-  background-color: blue;
+  border: 0.3em solid blue;
 }
 
 div.thumbnails ul li a img, div.thumbnails ul li a span

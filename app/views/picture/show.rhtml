@@ -7,4 +7,4 @@
 </dl>
 <%= link_to_button('Edit', :action => 'edit', :id => @picture.id) %>
 </div>
-<%= link_to('Return to List', :controller => 'picture', :action => 'list', :album_id => @picture.album_id) %>
+<%= link_to('Return to List', :controller => 'picture', :action => 'list', :album_id => @picture.album_id, :page => to_page(@picture.position, 10)) %>

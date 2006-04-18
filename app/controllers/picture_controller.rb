@@ -1,6 +1,7 @@
 class PictureController < ApplicationController
   verify :method => :post, :only => %w( destroy move_first move_up move_down move_last )
   verify :method => :get, :only => %w( show list )
+  cache_sweeper :picture_sweeper, :only => [:destroy, :edit]
 
   def list
     @album = current_user.albums.find(params[:album_id])
@@ -40,7 +41,6 @@ class PictureController < ApplicationController
     picture = find_picture(params[:id])
     album = picture.album
     picture.destroy
-    expire_album(album)
     flash[:notice] = 'Picture was successfully deleted.'
     redirect_to_list(album.id)
   end
@@ -55,7 +55,6 @@ private
   def move(action)
     picture = find_picture(params[:id])
     picture.send(action)
-    expire_album(picture.album)
     redirect_to_list(picture.album_id)
   end
 

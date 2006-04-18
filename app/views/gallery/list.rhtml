@@ -5,7 +5,7 @@
   <% for album in @albums %>
   <li class="album">
   <h3><%= h(album.caption) %></h3>
-  <a href="<%= url_for(:user => params[:user], :album => album.permalink, :action => 'show') %>" title="<%= h(album.caption) %>"><img src="<%= url_for(:action => 'show_image', :user => params[:user], :album => album.permalink, :size => 'thumbnail', :picture => album.pictures[0].filename) %>" alt="<%= h(album.caption) %>"/></a>
+  <a href="<%= url_for(:user => params[:user], :album => album.permalink, :action => 'show') %>" title="<%= h(album.caption) %>"><img src="<%= url_for(:action => 'show_image', :size => 'thumbnail', :image => album.pictures[0].filename) %>" alt="<%= h(album.caption) %>"/></a>
 <div class="metadata">
 <div class="date"><%= album.created_at.strftime('%b %d, %Y') %></div>
 <p class="description"><%= album.description %></p>
