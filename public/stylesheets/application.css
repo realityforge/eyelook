@@ -186,8 +186,10 @@ div.metadata p.description
   border-bottom: 1px solid black;
   margin: 0;
   padding: 1.5em;
-  width: 26em;
 }
+
+li.album div.metadata p.description {width: 16em;}
+div.picture div.metadata p.description {width: 26em;}
 
 div.metadata div.tags p, div.metadata div.operations p, div.metadata div.operations ul li, div.metadata div.tags ul li {font-size: 140%;}
 
