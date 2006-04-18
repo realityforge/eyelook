@@ -1,5 +1,5 @@
 <ol class="positioning">
-<% if index != 1 %>
+<% if (offset + index - 1) != 1 %>
   <li class="move-first-enabled">
   <%= link_to("<span>Move First</span>", 
               {:action => 'move_first', :id => object}.update(extra_params),
@@ -14,7 +14,7 @@
   <li class="move-first-disabled"><span>Move First</span></li>
   <li class="move-up-disabled"><span>Move Up</span></li>
 <% end %>
-<% if index != object_count %>
+<% if (offset + index - 1) != object_count %>
   <li class="move-down-enabled">
   <%= link_to("<span>Move Down</span>",
               {:action => 'move_down', :id => object}.update(extra_params), 
