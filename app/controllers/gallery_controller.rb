@@ -64,7 +64,7 @@ class GalleryController < ApplicationController
     return object_pages, objects
   end
 
-  @@geometry = {'large' => '300x300', 'thumbnail' => '100x100'}
+  @@geometry = {'large' => '500x500', 'medium' => '300x300', 'thumbnail' => '100x100'}
   
   def find_user
     user = User.find(:first, :conditions => ['name = ?', params[:user]])

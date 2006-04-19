@@ -32,7 +32,7 @@ end
 </div>
 <div class="picture">
 <h3><%= h(@picture.caption) %></h3>
-<a href="<%= url_for(:action => 'show_image', :image => @picture.filename, :size => 'original') %>" rel="lightbox" title="<%= h(@picture.caption) %>" class="image"><img src="<%= url_for(:action => 'show_image', :image => @picture.filename, :size => 'large') %>" alt="<%= h(@picture.caption) %>"/></a>
+<a href="<%= url_for(:action => 'show_image', :image => @picture.filename, :size => 'large') %>" rel="lightbox" title="<%= h(@picture.caption) %>" class="image"><img src="<%= url_for(:action => 'show_image', :image => @picture.filename, :size => 'medium') %>" alt="<%= h(@picture.caption) %>"/></a>
 
 <div class="metadata">
 <p class="description"><%= @picture.description %></p>
