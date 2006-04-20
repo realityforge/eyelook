@@ -2,6 +2,7 @@
 <%= link_to('Create Picture', {:action => 'new', :album_id => params[:album_id]}, {:title => 'Create Picture'}) %>
 <table style="width: 100%;">
   <tr>
+    <th>Image</th>
     <th>Caption</th>
     <th>Positioning</th>
     <th>Operations</th>
@@ -12,6 +13,7 @@
      index += 1
 %>
   <tr class="<%= cycle("even", "odd") %>">
+    <td><img src="<%= url_for(:controller => 'gallery', :action => 'show_image', :image => picture.filename, :size => 'thumbnail') %>" alt="<%= h(picture.caption) %>"/></td>
     <td><span title="<%= h(picture.caption) %>"><%= h(picture.caption) %></span></td>
     <td><%= render(:partial => '/positioning', :locals => {:object => picture, :index => index, :object_count => @picture_pages.last.last_item, :offset => @picture_pages.current.first_item, :extra_params => {:page => params[:page]}} ) %></td>
     <td>
