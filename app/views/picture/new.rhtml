@@ -3,6 +3,6 @@
   @form_title = "Create Picture"
   @form_action = {:action => 'new'}
   @form_action_desc = 'Create'
-  @form_cancel_action = {:action => 'list', :album_id => params[:album_id]}
+  @form_cancel_action = {:action => 'list', :album_id => params[:album_id], :page => params[:page]}
 %>
 <%= render(:partial => 'form') %>
