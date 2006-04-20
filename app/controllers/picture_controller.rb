@@ -9,7 +9,7 @@ class PictureController < ApplicationController
       paginate(:pictures, 
                :conditions => ['album_id = ?', @album.id],
                :order_by => 'position',
-               :per_page => 10)
+               :per_page => 9)
   end
   
   def new
