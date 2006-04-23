@@ -37,7 +37,7 @@ class GalleryController < ApplicationController
                 :type => @picture.content_type,
                 :disposition => 'inline')
     else
-      geometry = @@geometry[params[:size]]
+      geometry = ::ImageGeometry[params[:size]]
       if geometry.nil?
         render :text => "Arbitrary image geometry not currently implemented.", :status => 501
       else
@@ -64,8 +64,6 @@ class GalleryController < ApplicationController
     return object_pages, objects
   end
 
-  @@geometry = {'large' => '500x500', 'medium' => '300x300', 'thumbnail' => '100x100'}
-  
   def find_user
     user = User.find(:first, :conditions => ['name = ?', params[:user]])
     raise ActiveRecord::RecordNotFound, "Couldn't find User with name = #{params[:user]}" unless user

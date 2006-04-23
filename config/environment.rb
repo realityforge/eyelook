@@ -7,6 +7,8 @@
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+::ImageGeometry = {'original' => '', 'large' => '500x500', 'medium' => '300x300', 'thumbnail' => '100x100'}
+
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence those specified here
   
