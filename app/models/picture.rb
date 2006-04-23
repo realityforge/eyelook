@@ -3,8 +3,6 @@ class Picture < ActiveRecord::Base
   has_one :picture_data, :dependent => true
 
   validates_presence_of :album_id, :content_type
-  validates_length_of :caption, :in => 1...50
-  validates_uniqueness_of :caption, :scope => 'album_id'
 
   acts_as_taggable
   acts_as_list :scope => :album_id
