@@ -20,16 +20,15 @@
   <%= javascript_include_tag('lightbox') %>
   <%= stylesheet_link_tag('lightbox', :media => 'screen') %>
   <%= stylesheet_link_tag('application', :media => 'screen') %>
-  <%= @content_for_head if @content_for_head %>
+  <%= yield :head %>
 </head>
 <body id="<%= controller.class.name.gsub(/Controller/,'').gsub(/\:\:/,'_').downcase %>__<%= @action_name %>">
 
-<div id="content"><%= @content_for_layout %></div>
+<div id="content"><%= yield %></div>
 
 <div id="footer">
 <% if RAILS_ENV == 'development' %>
-<center>
-<button onclick="show_debug_popup(); return false;">Show debug popup</button></center>
+<center><button onclick="show_debug_popup(); return false;">Show debug popup</button></center>
 <%= debug_popup %>
 <% end %>
 </div>
