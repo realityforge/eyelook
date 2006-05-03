@@ -19,6 +19,10 @@ Options +FollowSymLinks +ExecCGI
 #   RewriteRule ^(.*)$ dispatch.fcgi [QSA,L]
 RewriteEngine On
 
+# Make sure access to subversion directories is forbidden
+RewriteRule ^(.*/)?\.svn/ - [F,L]
+ErrorDocument 403 "Access Forbidden"
+
 # If your Rails application is accessed via an Alias directive,
 # then you MUST also set the RewriteBase in this htaccess file.
 #
