@@ -126,17 +126,20 @@ div.picture
   float: left;
   margin: 0;
   padding: 0;
+  width: 31em;
 }
 
 div.picture h3
 { 
   text-align: center;
+  border: 0;
+  margin: 0;
+  padding: 0;
 }
 
 div.picture a.image
 {
   display: block;
-  width: 31em;
   height: 31em;
   text-align: center;
   border: 0;
